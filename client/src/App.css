@@ -3,7 +3,8 @@
   /* keep all the white spaces instead of compressing multiple white spaces into one: */
   white-space: pre;
   min-height: 100vh;
-  background-color: #429d5e85;
+  /* background-color: #429d5e85; */
+  background-color: rgb(143, 212, 216);
 }
 
 .App-logo {
@@ -20,8 +21,7 @@
 
 .App-header {
   /* background-color: #429d5e85; */
-  background-color: rgba(56, 190, 197, 0.36);
-  background-color: rgb(143, 212, 216);
+  /* background-color: rgb(143, 212, 216); */
   height: 250px;
   display: flex;
   flex-direction: column;
