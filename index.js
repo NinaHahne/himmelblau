@@ -6,27 +6,26 @@ const path = require("path");
 // Create the server
 const app = express();
 
+const { getHours } = require('./db');
+
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use(express.json());
 
-app.get("/open", (req, res) => {
-  console.log("*************** /open ***********");
-  getOpeningHours()
+app.get("/hours", (req, res) => {
+  console.log("*************** /hours ***********");
+  getHours()
     .then(rows => {
       // check if rows[0].length != 0;
+      // res.status(200).send(rows);
       res.json({
-        success: true,
-        userId: rows[0].id,
-        first: rows[0].first,
-        last: rows[0].last,
-        imageUrl: rows[0].img_url || "/images/duck-308733.png",
-        bio: rows[0].bio || ""
+        hours: rows
       });
     })
     .catch(err => {
-      console.log("err in GET /open: ", err);
+      console.log("err in GET /hours: ", err);
+      // res.status(500).send(err);
       res.json({
         success: false
       });

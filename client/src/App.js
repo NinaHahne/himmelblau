@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from "./axios";
+import axios from "axios";
 import logo from "./himmelblau-logo.png";
 import "./App.css";
 
@@ -15,11 +15,11 @@ export default class App extends Component {
   }
   getOpeningHours() {
     console.log('I will get the current opening hours now :)');
-    // axios.get("/open").then(({ data }) => {
-    //   // console.log('data from get /open: ', data);
-    //   this.setState(data);
-    //   // console.log("state of app: ", this.state);
-    // });
+    axios.get("/hours").then(({ data }) => {
+      console.log('data from get /hours: ', data);
+      // this.setState(data);
+      // console.log("state of app: ", this.state);
+    });
   }
   render() {
     return (
