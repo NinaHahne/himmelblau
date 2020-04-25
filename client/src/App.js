@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from "axios";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+
 import logo from "./himmelblau-logo.png";
 import "./App.css";
+
+import Hours from "./Hours";
 
 export default class App extends Component {
   constructor(props) {
@@ -17,8 +21,8 @@ export default class App extends Component {
     console.log('I will get the current opening hours now :)');
     axios.get("/hours").then(({ data }) => {
       console.log('data from get /hours: ', data);
-      // this.setState(data);
-      // console.log("state of app: ", this.state);
+      this.setState(data);
+      console.log("state of app: ", this.state);
     });
   }
   render() {
@@ -27,6 +31,9 @@ export default class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
+        <Hours
+          hours={this.state.hours}
+        />
       </div>
     );
   }
