@@ -18,7 +18,6 @@ app.get("/hours", (req, res) => {
   getHours()
     .then(rows => {
       // check if rows[0].length != 0;
-      // res.status(200).send(rows);
       res.json({
         hours: rows
       });
