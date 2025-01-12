@@ -1,3 +1,21 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.logo {
+    width: 100%;
+}
+
+aside > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-between;
+    height: 100%;
+}
