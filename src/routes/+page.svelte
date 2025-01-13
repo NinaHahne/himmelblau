@@ -82,6 +82,6 @@
     }
 
     .door-frame:hover .door {
-        transform: rotateY(-30deg);
+        transform: rotateY(24deg);
     }
 </style>
