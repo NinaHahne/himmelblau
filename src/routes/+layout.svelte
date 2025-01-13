@@ -27,7 +27,7 @@
                     </li>
                     <li>
                         <a href="/himmelblau" class="block text-navy hover:text-gold transition-colors duration-300">
-                            Himmelblau
+                            himmelblau
                         </a>
                     </li>
                     <li>

@@ -21,11 +21,12 @@ export default {
 				mist: '#e8ecef', // Misty Grey
 
 				// Text:
+				'deep-moss': '#223928', // Deep Moss Green
 				charcoal: '#333333', // Charcoal Grey
 				brown: '#5a4631', // Soft Earth Brown
-				'deep-moss': '#4a5d41', // Deep Moss Green
 				taupe: '#7d7064', // Warm Taupe
 				slate: '#4b5563', // Slate Grey
+				teal: '#1c3838', // Dark Teal
 
 				// Links:
 				navy: '#1e3a5f', // Navy Blue
