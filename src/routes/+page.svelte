@@ -77,8 +77,8 @@
         width: 160px;
         height: auto;
         color: #223928;
-        transition: transform 0.3s ease;
-        transform-origin: left;
+        transition: transform 0.3s ease-in-out;
+        transform-origin: left center;
     }
 
     .door-frame:hover .door {

@@ -32,7 +32,6 @@ export default {
 				navy: '#1e3a5f', // Navy Blue
 				gold: '#f0a500', // Soft Gold or #d1a854
 				coral: '#ff725e', // Pastel Coral
-				'soft-olive': '#6b8f6d', // Soft Olive
 
 				// Bluebell Colors:
 				bluebell: '#097ff7',
