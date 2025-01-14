@@ -42,11 +42,12 @@ export default {
 				'stem-green': '#22c662', // Stem Green
             },
 			fontFamily: {
+				amaticSC: ['Amatic SC', 'cursive'], // Navigation/Links
 				sacramento: ['Sacramento', 'cursive'],
 				architectsDaughter: ['Architects Daughter', 'cursive'],
 				patrickHand: ['Patrick Hand', 'cursive'],
-				amaticSC: ['Amatic SC', 'cursive'],
-				nunito: ['Nunito', 'sans-serif'],
+				dancingScript: ['Dancing Script', 'cursive'],
+				nunito: ['Nunito', 'sans-serif'], // Text
 			},
 		}
 	},
