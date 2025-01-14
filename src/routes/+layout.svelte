@@ -6,10 +6,10 @@
 <div class="flex min-h-screen">
 
     <!-- Sidebar Navigation -->
-    <aside class="w-72 bg-sky-blue text-gray-800 fixed h-full">
+    <aside class="font-amaticSC w-72 bg-sky-blue text-gray-800 fixed h-full">
         <div class="p-6 h-full">
             <!-- Logo -->
-            <a href="/" aria-label="Himmelblau Startseite" class="block mb-6">
+            <a href="/" aria-label="Himmelblau Startseite" class="block mb-12">
                 <img
                     src="/images/logo.webp"
                     alt="Himmelblau Logo"
@@ -19,7 +19,7 @@
 
             <!-- Navigation Links -->
             <nav>
-                <ul class="space-y-4 text-lg">
+                <ul class="space-y-4 text-[46px] leading-none">
                     <li>
                         <a href="/" class="block text-stem-green hover:text-bluebell transition-colors duration-300">
                             Blumenladen
@@ -46,7 +46,7 @@
                         </a>
                     </li>
                 </ul>
-				<ul class="space-y-4 text-lg">
+				<ul class="space-y-4 text-[30px] leading-none">
                     <li>
                         <a href="/impressum" class="block text-navy hover:text-gold transition-colors duration-300">
                             Impressum
@@ -63,8 +63,15 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 ml-72 p-8 bg-mint">
+    <main class="font-nunito flex-1 ml-72 p-8 bg-mint">
         {@render children()}
     </main>
 
 </div>
+
+<style>
+    aside a {
+        /* font-weight: 700; */
+        /* letter-spacing: 0.025em; */
+    }
+</style>

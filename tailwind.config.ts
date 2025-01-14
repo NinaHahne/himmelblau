@@ -41,6 +41,13 @@ export default {
 				'leaf-green': '#73e8ac', // Leaf Green
 				'stem-green': '#22c662', // Stem Green
             },
+			fontFamily: {
+				sacramento: ['Sacramento', 'cursive'],
+				architectsDaughter: ['Architects Daughter', 'cursive'],
+				patrickHand: ['Patrick Hand', 'cursive'],
+				amaticSC: ['Amatic SC', 'cursive'],
+				nunito: ['Nunito', 'sans-serif'],
+			},
 		}
 	},
 
