@@ -13,8 +13,11 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter(),
 		paths: {
-			base: '',
+			base: '/himmelblau',
 		},
+		prerender: {
+            handleHttpError: 'warn', // Suppress 404 errors for now
+        },
 	}
 };
 
