@@ -1,3 +1,7 @@
+<script lang="ts">
+    import { base } from '$app/paths'; // Dynamically get the base path
+</script>
+
 <div class="flex flex-col items-center">
     <p class="text-center text-deep-moss">
         Im kleinen 
@@ -18,7 +22,7 @@
     
     <div class="door-frame m-8">
         <img 
-            src="/images/Tuer.webp" 
+            src="{base}/images/Tuer.webp" 
             alt="himmelblaue Ladentür" 
             class="door" 
         />

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from '$app/paths'; // Dynamically get the base path
     import '../app.css';
     let { children } = $props();
 </script>
@@ -9,9 +10,9 @@
     <aside class="font-amaticSC w-72 bg-sky-blue text-gray-800 fixed h-full">
         <div class="p-6 h-full">
             <!-- Logo -->
-            <a href="/" aria-label="Himmelblau Startseite" class="block mb-12">
+            <a href="{base}/" aria-label="Himmelblau Startseite" class="block mb-12">
                 <img
-                    src="/images/logo.webp"
+                    src="{base}/images/logo.webp"
                     alt="Himmelblau Logo"
                     class="logo mx-auto"
                 />
@@ -21,39 +22,39 @@
             <nav>
                 <ul class="space-y-4 text-[46px] leading-none">
                     <li>
-                        <a href="/" class="block text-stem-green hover:text-bluebell transition-colors duration-300">
+                        <a href="{base}/" class="block text-stem-green hover:text-bluebell transition-colors duration-300">
                             Blumenladen
                         </a>
                     </li>
                     <li>
-                        <a href="/himmelblau" class="block text-navy hover:text-gold transition-colors duration-300">
+                        <a href="{base}/himmelblau" class="block text-navy hover:text-gold transition-colors duration-300">
                             himmelblau
                         </a>
                     </li>
                     <li>
-                        <a href="/bluetenspuren" class="block text-navy hover:text-gold transition-colors duration-300">
+                        <a href="{base}/bluetenspuren" class="block text-navy hover:text-gold transition-colors duration-300">
                             BlütenSpuren
                         </a>
                     </li>
                     <!-- <li>
-                        <a href="/tanzspuren" class="block text-navy hover:text-gold transition-colors duration-300">
+                        <a href="{base}/tanzspuren" class="block text-navy hover:text-gold transition-colors duration-300">
                             TanzSpuren
                         </a>
                     </li> -->
                     <li>
-                        <a href="/bildergalerie" class="block text-navy hover:text-gold transition-colors duration-300">
+                        <a href="{base}/bildergalerie" class="block text-navy hover:text-gold transition-colors duration-300">
                             Bildergalerie
                         </a>
                     </li>
                 </ul>
 				<ul class="space-y-4 text-[30px] leading-none">
                     <li>
-                        <a href="/impressum" class="block text-navy hover:text-gold transition-colors duration-300">
+                        <a href="{base}/impressum" class="block text-navy hover:text-gold transition-colors duration-300">
                             Impressum
                         </a>
                     </li>
                     <li>
-                        <a href="/datenschutz" class="block text-navy hover:text-gold transition-colors duration-300">
+                        <a href="{base}/datenschutz" class="block text-navy hover:text-gold transition-colors duration-300">
                             Datenschutz
                         </a>
                     </li>

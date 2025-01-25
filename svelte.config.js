@@ -13,7 +13,7 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter(),
 		paths: {
-			base: '/himmelblau',
+			base: process.env.NODE_ENV === 'production' ? '/himmelblau' : '', // Use '/himmelblau' in production, '' locally
 		},
 		prerender: {
             handleHttpError: 'warn', // Suppress 404 errors for now
