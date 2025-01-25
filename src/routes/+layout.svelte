@@ -31,15 +31,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/blueten-spuren" class="block text-navy hover:text-gold transition-colors duration-300">
+                        <a href="/bluetenspuren" class="block text-navy hover:text-gold transition-colors duration-300">
                             BlütenSpuren
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="/tanzspuren" class="block text-navy hover:text-gold transition-colors duration-300">
                             TanzSpuren
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="/bildergalerie" class="block text-navy hover:text-gold transition-colors duration-300">
                             Bildergalerie
