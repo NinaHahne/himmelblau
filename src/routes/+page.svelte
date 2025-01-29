@@ -1,5 +1,35 @@
 <script lang="ts">
     import { base } from '$app/paths'; // Dynamically get the base path
+    import client from '$lib/sanityClient';
+
+    let openingHours: { day: string; hours: string }[] = [];
+
+    async function fetchOpeningHours() {
+        openingHours = await client.fetch(`
+            *[_type == "openingHours"] | order(day asc) {
+                day,
+                hours
+            }
+        `);
+    }
+
+    fetchOpeningHours();
+
+    // Group opening hours by time
+    function groupOpeningHours(openingHours: { day: string; hours: string; }[]): { hours: string; days: string[] }[] {
+        const grouped: { [hours: string]: string[] } = {};
+        openingHours.forEach(({ day, hours }) => {
+            if (!grouped[hours]) {
+                grouped[hours] = [];
+            }
+            grouped[hours].push(day);
+        });
+
+        return Object.entries(grouped).map(([hours, days]) => ({ hours, days }));
+    }
+
+    // 🛠️ This will automatically update when `openingHours` is fetched
+    $: groupedHours = groupOpeningHours(openingHours);
 </script>
 
 <div class="flex flex-col items-center">
@@ -32,9 +62,23 @@
         <br>
         öffnet sich in dieser Woche <strong class="text-coral">*)</strong>
         <br>
-        am Freitag & Samstag
-        <br>
-        12°°- 18°° 
+        {#each groupedHours as { days, hours }, i}
+            am 
+            {#if days.length === 2}
+                <strong>{days[0]} & {days[1]}</strong>
+            {:else}
+                {days.slice(0, -1).join(", ")} & {days[days.length - 1]}
+            {/if}
+            <br>
+            <strong>{hours}</strong>
+            {#if i < groupedHours.length - 1}
+                <br>
+            {/if}
+        {/each}
+        <!-- 
+            am Freitag & Samstag 
+            12°°- 18°° 
+        -->
     </p>
     <p id="adress" class="text-deep-moss text-center m-2">
         Markelstraße 13<br>   
