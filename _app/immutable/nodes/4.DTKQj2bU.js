@@ -1,0 +1,1 @@
+import{a as t,t as p}from"../chunks/ISGkLU6J.js";import"../chunks/sDPsF3S9.js";import{n as r}from"../chunks/DAyCiLTT.js";var a=p("<h1>Coming Soon: Blüten Spuren</h1> <p>This page is under construction.</p>",1);function s(o){var n=a();r(2),t(o,n)}export{s as component};
