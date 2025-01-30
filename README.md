@@ -1,38 +1,93 @@
-# sv
+# 🌸 Himmelblau Website
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is the **Himmelblau** flower shop website, built with **SvelteKit** and integrated with **Sanity CMS** for dynamic content management.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 🚀 Project Overview
+- **Framework**: SvelteKit (Static Site)
+- **CMS**: Sanity.io (for opening hours, events, and image gallery)
+- **Hosting**: GitHub Pages
+- **Deployment**: Automated via GitHub Actions
+- **Content Updates**: Managed through [Sanity Studio](https://himmelblau-studio.sanity.studio)
 
+---
+
+## 📌 **Setup & Installation**
+### **1️⃣ Install Dependencies**
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+cd ~/code/himmelblau
+npm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+### **2️⃣ Start Local Development Server**
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
+- Open [http://localhost:5173](http://localhost:5173) in your browser.
+- The site will load with the latest Sanity content.
 
-## Building
+---
 
-To create a production version of your app:
+## 🖼️ **Fetching Content from Sanity**
+### **Content Managed in Sanity Studio**
+- **Öffnungszeiten (Opening Hours)**
+- **Events & Announcements**
+- **Image Gallery**
 
+### **Update Content (No Redeploy Needed!)**
+1. Go to [Sanity Studio](https://himmelblau-studio.sanity.studio).
+2. Edit the content and click **Publish**.
+3. The website will automatically fetch updated content.
+
+---
+
+## 🔄 **Building & Deploying**
+### **Build for Production**
 ```bash
 npm run build
 ```
+This generates static files in `build/`.
 
-You can preview the production build with `npm run preview`.
+### **Deploy to GitHub Pages**
+Deployment is handled automatically via **GitHub Actions** whenever changes are pushed to `main`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+To trigger a manual deployment:
+```bash
+git push origin main
+```
+
+---
+
+## 🌍 **Fixing CORS Issues (If Content Doesn't Load)**
+If the site can’t fetch data from Sanity:
+1. Go to [Sanity API Settings](https://www.sanity.io/manage).
+2. Under **CORS Origins**, make sure this is added:
+   ```
+   https://your-github-username.github.io
+   ```
+3. Enable **"Allow credentials"** if an API token is used.
+4. Save & refresh the site.
+
+---
+
+## ⚡ **Common Commands**
+| Command                    | Description |
+|----------------------------|-------------|
+| `npm install`              | Install dependencies. |
+| `npm run dev`              | Start local development server. |
+| `npm run build`            | Build for production. |
+| `npm run preview`          | Preview the production build. |
+
+---
+
+## ❓ **Need Help?**
+- **Check the Console** (`F12 → Console`) if something isn’t loading.
+- **Sanity Studio Issues?** Try redeploying:
+  ```bash
+  cd ~/code/himmelblau-cms
+  npm run deploy
+  ```
+- **Deployment Issues?** Check GitHub Actions logs.
+
+🚀 **Happy coding & flower magic!** 🌷✨
