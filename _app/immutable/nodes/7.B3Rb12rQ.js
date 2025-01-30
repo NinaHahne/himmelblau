@@ -1,1 +1,0 @@
-import{a as n,t as p}from"../chunks/ISGkLU6J.js";import"../chunks/sDPsF3S9.js";import{n as r}from"../chunks/DAyCiLTT.js";var a=p("<h1>Coming Soon: Impressum</h1> <p>This page is under construction.</p>",1);function i(o){var t=a();r(2),n(o,t)}export{i as component};
