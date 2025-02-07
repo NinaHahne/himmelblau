@@ -5,6 +5,7 @@ This is the **Himmelblau** flower shop website, built with **SvelteKit** and int
 ---
 
 ## 🚀 Project Overview
+
 - **Framework**: SvelteKit (Static Site)
 - **CMS**: Sanity.io (for opening hours, events, and image gallery)
 - **Hosting**: GitHub Pages
@@ -14,28 +15,35 @@ This is the **Himmelblau** flower shop website, built with **SvelteKit** and int
 ---
 
 ## 📌 **Setup & Installation**
+
 ### **1️⃣ Install Dependencies**
+
 ```bash
 cd ~/code/himmelblau
 npm install
 ```
 
 ### **2️⃣ Start Local Development Server**
+
 ```bash
 npm run dev
 ```
+
 - Open [http://localhost:5173](http://localhost:5173) in your browser.
 - The site will load with the latest Sanity content.
 
 ---
 
 ## 🖼️ **Fetching Content from Sanity**
+
 ### **Content Managed in Sanity Studio**
+
 - **Öffnungszeiten (Opening Hours)**
 - **Events & Announcements**
 - **Image Gallery**
 
 ### **Update Content (No Redeploy Needed!)**
+
 1. Go to [Sanity Studio](https://himmelblau-studio.sanity.studio).
 2. Edit the content and click **Publish**.
 3. The website will automatically fetch updated content.
@@ -43,16 +51,21 @@ npm run dev
 ---
 
 ## 🔄 **Building & Deploying**
+
 ### **Build for Production**
+
 ```bash
 npm run build
 ```
+
 This generates static files in `build/`.
 
 ### **Deploy to GitHub Pages**
+
 Deployment is handled automatically via **GitHub Actions** whenever changes are pushed to `main`.
 
 To trigger a manual deployment:
+
 ```bash
 git push origin main
 ```
@@ -60,7 +73,9 @@ git push origin main
 ---
 
 ## 🌍 **Fixing CORS Issues (If Content Doesn't Load)**
+
 If the site can’t fetch data from Sanity:
+
 1. Go to [Sanity API Settings](https://www.sanity.io/manage).
 2. Under **CORS Origins**, make sure this is added:
    ```
@@ -72,16 +87,18 @@ If the site can’t fetch data from Sanity:
 ---
 
 ## ⚡ **Common Commands**
-| Command                    | Description |
-|----------------------------|-------------|
-| `npm install`              | Install dependencies. |
-| `npm run dev`              | Start local development server. |
-| `npm run build`            | Build for production. |
-| `npm run preview`          | Preview the production build. |
+
+| Command           | Description                     |
+| ----------------- | ------------------------------- |
+| `npm install`     | Install dependencies.           |
+| `npm run dev`     | Start local development server. |
+| `npm run build`   | Build for production.           |
+| `npm run preview` | Preview the production build.   |
 
 ---
 
 ## ❓ **Need Help?**
+
 - **Check the Console** (`F12 → Console`) if something isn’t loading.
 - **Sanity Studio Issues?** Try redeploying:
   ```bash

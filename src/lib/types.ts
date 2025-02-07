@@ -1,11 +1,11 @@
 export type NavLink = {
-    title: string;
-    url: string;
-    color?: string;
-    hoverColor?: string;
+  title: string;
+  url: string;
+  color?: string;
+  hoverColor?: string;
 };
 
 export type NavigationData = {
-    navLinks: NavLink[];
-    footerLinks: { title: string; url: string }[];
+  navLinks: NavLink[];
+  footerLinks: { title: string; url: string }[];
 };

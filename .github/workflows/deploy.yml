@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write  # This allows GitHub Actions to push changes to the repository
+      contents: write # This allows GitHub Actions to push changes to the repository
 
     steps:
       - name: Checkout code
