@@ -4,9 +4,11 @@
 
   let openingHours: { day: string; hours: string }[] = [];
 
+  const weekdays = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+
   async function fetchOpeningHours() {
     openingHours = await client.fetch(`
-      *[_type == "openingHours"] | order(day asc) {
+      *[_type == "openingHours"] {
           day,
           hours
       }
@@ -15,16 +17,34 @@
 
   fetchOpeningHours();
 
+  // sort opening hours by day
+  // Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag
+  // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+
+  $: openingHours.sort((a, b) => {
+    const dayIndexA = weekdays.indexOf(a.day);
+    const dayIndexB = weekdays.indexOf(b.day);
+    return dayIndexA - dayIndexB;
+  });
+
+  // $: console.log("openingHours", openingHours);
+
+  // Group opening hours by hours, if days with the same hours follow each other:
+
   function groupOpeningHours(openingHours: { day: string; hours: string }[]): { hours: string; days: string[] }[] {
-    const grouped: { [hours: string]: string[] } = {};
+    const grouped: { hours: string; days: string[] }[] = [];
+    let currentGroup: { hours: string; days: string[] } | null = null;
+
     openingHours.forEach(({ day, hours }) => {
-      if (!grouped[hours]) {
-        grouped[hours] = [];
+      if (!currentGroup || currentGroup.hours !== hours) {
+        currentGroup = { hours, days: [day] };
+        grouped.push(currentGroup);
+      } else {
+        currentGroup.days.push(day);
       }
-      grouped[hours].push(day);
     });
 
-    return Object.entries(grouped).map(([hours, days]) => ({ hours, days }));
+    return grouped;
   }
 
   // 🛠️ This will automatically update when `openingHours` is fetched
@@ -60,7 +80,9 @@
     <br />
     {#each groupedHours as { days, hours }, i}
       am
-      {#if days.length === 2}
+      {#if days.length === 1}
+        {days[0]}
+      {:else if days.length === 2}
         <strong>{days[0]} & {days[1]}</strong>
       {:else}
         {days.slice(0, -1).join(", ")} & {days[days.length - 1]}
@@ -72,9 +94,9 @@
       {/if}
     {/each}
     <!-- 
-            am Freitag & Samstag 
-            12°°- 18°° 
-        -->
+      am Freitag & Samstag 
+      12°° – 18°°
+    -->
   </p>
   <p id="adress" class="m-2 text-center text-deep-moss">
     Markelstraße 13<br />
