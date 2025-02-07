@@ -1,6 +1,9 @@
 <script lang="ts">
   import { base } from "$app/paths"; // Dynamically get the base path
   import client from "$lib/sanityClient";
+  import { weekdayTranslations } from "$lib/weekdays";
+
+  const lang = "de"; // TODO: Change dynamically based on URL or user preference
 
   let openingHours: { day: string; hours: string }[] = [];
 
@@ -36,11 +39,12 @@
     let currentGroup: { hours: string; days: string[] } | null = null;
 
     openingHours.forEach(({ day, hours }) => {
+      const translatedDay = weekdayTranslations[day][lang];
       if (!currentGroup || currentGroup.hours !== hours) {
-        currentGroup = { hours, days: [day] };
+        currentGroup = { hours, days: [translatedDay] };
         grouped.push(currentGroup);
       } else {
-        currentGroup.days.push(day);
+        currentGroup.days.push(translatedDay);
       }
     });
 
