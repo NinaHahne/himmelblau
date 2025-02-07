@@ -14,12 +14,12 @@
   $effect(() => {
     async function fetchNavigation() {
       navigation = await client.fetch(`
-                *[_type == "navigation"][0] {
-                    logo,
-                    navLinks,
-                    footerLinks
-                }
-            `);
+        *[_type == "navigation"][0] {
+            logo,
+            navLinks,
+            footerLinks
+        }
+    `);
     }
     fetchNavigation();
   });
@@ -38,25 +38,25 @@
       <nav>
         <ul class="space-y-4 text-[46px] leading-none">
           <!-- <li>
-                        <a href="{base}/" class="block text-stem-green hover:text-bluebell transition-colors duration-300">
-                            Blumenladen
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{base}/himmelblau" class="block text-navy hover:text-gold transition-colors duration-300">
-                            himmelblau
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{base}/bluetenspuren" class="block text-navy hover:text-gold transition-colors duration-300">
-                            BlütenSpuren
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{base}/bildergalerie" class="block text-navy hover:text-gold transition-colors duration-300">
-                            Bildergalerie
-                        </a>
-                    </li> -->
+              <a href="{base}/" class="block text-stem-green hover:text-bluebell transition-colors duration-300">
+                  Blumenladen
+              </a>
+          </li>
+          <li>
+              <a href="{base}/himmelblau" class="block text-navy hover:text-gold transition-colors duration-300">
+                  himmelblau
+              </a>
+          </li>
+          <li>
+              <a href="{base}/bluetenspuren" class="block text-navy hover:text-gold transition-colors duration-300">
+                  BlütenSpuren
+              </a>
+          </li>
+          <li>
+              <a href="{base}/bildergalerie" class="block text-navy hover:text-gold transition-colors duration-300">
+                  Bildergalerie
+              </a>
+          </li> -->
           {#each navigation?.navLinks ?? [] as { title, url, color, hoverColor }}
             <li>
               <a
