@@ -64,7 +64,7 @@
       Im kleinen
       <a
         class="text-stem-green transition-colors duration-300 hover:text-bluebell"
-        href="https://www.stadtteilzeitung-schoeneberg.de/2009/oktober/19.htm"
+        href="http://www.stadtteilzeitung-schoeneberg.de/2009/oktober/19.htm"
         target="_blank"
       >
         Blumenladen
@@ -78,9 +78,17 @@
       auch für die einfachen kleinen Anlässe.
     </p>
 
-    <div class="door-frame m-8">
-      <img src="{base}/images/Tuer.webp" alt="himmelblaue Ladentür" class="door" />
+    <div class="entrance relative m-8">
+      <img
+        src="{base}/images/PfingstrosenCampanula.webp"
+        alt="Pfingstrosen und Campanula"
+        class="room absolute inset-0 h-full w-full object-cover object-left-top"
+      />
+      <div class="door-frame">
+        <img src="{base}/images/Tuer_Fenster.webp" alt="himmelblaue Ladentür" class="door" />
+      </div>
     </div>
+
     <!-- prettier-ignore -->
     <p 
       class="opening-hours text-center text-bluebell tooltip-trigger"       
@@ -155,7 +163,6 @@
 <style>
   .door-frame {
     perspective: 1000px;
-    background-color: #cdeaf7;
   }
   .door {
     cursor: pointer;
@@ -164,6 +171,8 @@
     color: #223928;
     transition: transform 0.3s ease-in-out;
     transform-origin: left center;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
   }
 
   .door-frame:hover .door {
