@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { base } from "$app/paths"; // Dynamically get the base path
   import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import { weekdayTranslations } from "$lib/weekdays";
@@ -31,29 +32,12 @@
     return grouped;
   }
 
-  $effect(() => {
-    async function fetchOpeningHours() {
-      openingHours = await cachedFetch(`
-        *[_type == "openingHours"] {
-            day,
-            hours
-        }
-      `);
-    }
-    fetchOpeningHours();
-
-    // sort opening hours by day
-    // Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag
-    // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+  onMount(async () => {
+    // ✅ Use onMount to avoid infinite loops
+    openingHours = await cachedFetch(`*[_type == "openingHours"] { day, hours }`);
     if (!openingHours) return;
 
-    openingHours.sort((a, b) => {
-      const dayIndexA = weekdays.indexOf(a.day);
-      const dayIndexB = weekdays.indexOf(b.day);
-      return dayIndexA - dayIndexB;
-    });
-
-    // 🛠️ This will automatically update when `openingHours` is fetched
+    openingHours.sort((a, b) => weekdays.indexOf(a.day) - weekdays.indexOf(b.day));
     groupedHours = groupOpeningHours(openingHours);
   });
 </script>
