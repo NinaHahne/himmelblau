@@ -1,6 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths"; // Dynamically get the base path
-  import client from "$lib/sanityClient";
+  import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import { weekdayTranslations } from "$lib/weekdays";
   import type { OpeningHours } from "$lib/types";
 
@@ -33,7 +33,7 @@
 
   $effect(() => {
     async function fetchOpeningHours() {
-      openingHours = await client.fetch(`
+      openingHours = await cachedFetch(`
         *[_type == "openingHours"] {
             day,
             hours
