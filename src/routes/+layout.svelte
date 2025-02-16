@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { base } from "$app/paths"; // Dynamically get the base path
-  import client from "$lib/sanityClient";
+  import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import type { NavigationData } from "$lib/types";
 
   import "../app.css";
@@ -11,17 +12,15 @@
   let navigation = $state<NavigationData | null>(null);
 
   // Fetch navigation data when the component loads
-  $effect(() => {
-    async function fetchNavigation() {
-      navigation = await client.fetch(`
-        *[_type == "navigation"][0] {
-            logo,
-            navLinks,
-            footerLinks
-        }
+  onMount(async () => {
+    // ✅ Fetch only once when the component mounts
+    navigation = await cachedFetch(`
+      *[_type == "navigation"][0] {
+          logo,
+          navLinks,
+          footerLinks
+      }
     `);
-    }
-    fetchNavigation();
   });
 </script>
 
