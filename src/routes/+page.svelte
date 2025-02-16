@@ -119,7 +119,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col items-center justify-center">
+  <div class="absolute top-0 flex flex-col items-center justify-center lg:relative lg:top-auto">
     <p
       id="opening_hours-details"
       class="tooltip m-4 w-full text-right text-sm text-deep-moss"
