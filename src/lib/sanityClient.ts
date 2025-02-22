@@ -1,5 +1,11 @@
 import { createClient } from '@sanity/client';
 
+const workingOnCMS = process.env.WORKING_ON_CMS === 'true';
+
+if (workingOnCMS) {
+  console.log('Working on CMS (caching disabled)');
+}
+
 const isDev = process.env.NODE_ENV === 'development';
 
 const client = createClient({
@@ -7,7 +13,7 @@ const client = createClient({
   dataset: isDev ? 'production' : 'production', // Can be switched to a 'development' dataset if needed
   // useCdn: false, // Always fetch the latest data from Sanity
   // useCdn: true, // ✅ Enable Sanity CDN caching for production
-  useCdn: !isDev, // Disable CDN in development for live data, enable in production for caching
+  useCdn: !workingOnCMS, // Use CDN for caching when not working on CMS
   apiVersion: '2024-01-29', // Keep this date to ensure compatibility
   // token: import.meta.env.VITE_SANITY_TOKEN,
 });

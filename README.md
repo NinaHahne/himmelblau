@@ -23,10 +23,16 @@ cd ~/code/himmelblau
 npm install
 ```
 
-### **2️⃣ Start Local Development Server**
+### **2️⃣ a) Start Local Development Server (while not working on CMS)**
 
 ```bash
 npm run dev
+```
+
+### **2️⃣ b) Start Local Development Server & disable caching while working on CMS**
+
+```bash
+WORKING_ON_CMS=true npm run dev
 ```
 
 - Open [http://localhost:5173](http://localhost:5173) in your browser.
