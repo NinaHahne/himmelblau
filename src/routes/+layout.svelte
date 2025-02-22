@@ -36,12 +36,12 @@
   // });
 </script>
 
-<div class="relative flex min-h-dvh w-full">
+<div class="relative flex h-full min-h-dvh w-full">
   <!-- Sidebar Navigation -->
 
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
 
-  <nav class="menu pointer-events-none fixed z-40 h-lvh w-full overflow-hidden">
+  <nav class="menu pointer-events-none fixed z-40 h-full min-h-dvh w-full overflow-hidden">
     <button
       class="absolute left-0 top-0 h-full w-full cursor-pointer text-inherit lg:hidden"
       class:pointer-events-auto={showMenu}
