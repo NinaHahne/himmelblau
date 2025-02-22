@@ -6,6 +6,7 @@
 </script>
 
 <button
+  id="toggle_menu"
   class="fixed right-0 top-0 z-50 flex h-12 w-14 items-end justify-center p-4 lg:hidden"
   onclick={onToggle}
   aria-label={isOpen ? "Close menu" : "Open menu"}

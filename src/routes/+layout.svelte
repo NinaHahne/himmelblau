@@ -9,6 +9,27 @@
 
   let { children } = $props();
 
+  const getScrollbarWidth = () => {
+    // Scrollbar-Breite ermitteln
+    const e = document.createElement("div");
+    (e.style.visibility = "hidden"), (e.style.width = "100px"), document.body.append(e);
+    const t = e.offsetWidth;
+    e.style.overflow = "scroll";
+    const o = document.createElement("div");
+    (o.style.width = "100%"), e.append(o);
+    const d = o.offsetWidth;
+    e.remove();
+    document.body.style.setProperty("--scrollbar-width", t - d + "px");
+  };
+
+  let container: HTMLElement;
+  let resizeObserver: ResizeObserver;
+  let isBodyOverflowing = $state(false);
+
+  const checkBodyOverflow = () => {
+    isBodyOverflowing = document.body.scrollHeight > window.innerHeight;
+  };
+
   // ✅ Correct Svelte 5 runes usage:
   let navigation = $state<NavigationData | null>(null);
   let showMenu: boolean = $state(false);
@@ -30,13 +51,32 @@
           footerLinks
       }
     `);
+
+    getScrollbarWidth();
+
+    resizeObserver = new ResizeObserver(() => {
+      console.log("Layout changed!");
+      // Handle layout changes here
+      checkBodyOverflow();
+      console.log(isBodyOverflowing);
+    });
+    if (container) {
+      resizeObserver.observe(container);
+    }
   });
-  // onDestroy(() => {
-  //   console.log("layout onDestroy");
-  // });
+
+  onDestroy(() => {
+    // console.log("layout onDestroy");
+    resizeObserver?.disconnect();
+  });
 </script>
 
-<div class="relative flex min-h-dvh w-full">
+<div
+  bind:this={container}
+  class="relative flex min-h-dvh w-full"
+  class:overflowing={isBodyOverflowing}
+  class:show-menu={showMenu}
+>
   <!-- Sidebar Navigation -->
 
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
@@ -97,7 +137,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="flex-1 bg-mint pb-8 pl-4 pr-4 pt-12 font-nunito lg:ml-72 lg:pl-6 lg:pr-6 lg:pt-8">
+  <main class="flex w-full flex-col bg-mint pb-8 pl-4 pr-4 pt-12 font-nunito lg:ml-72 lg:pl-6 lg:pr-6 lg:pt-8">
     {@render children()}
   </main>
 </div>
