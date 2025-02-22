@@ -95,7 +95,7 @@
     </button>
     <div class="relative flex h-full w-72">
       <div
-        class="pointer-events-auto relative -left-full flex h-full w-full flex-col bg-sky-blue p-6 pt-8 font-amaticSC text-gray-800 transition-transform duration-300 lg:left-0"
+        class="pointer-events-auto relative -left-full flex h-full w-full flex-col overflow-auto bg-sky-blue p-6 pt-8 font-amaticSC text-gray-800 transition-transform duration-300 lg:left-0"
         class:translate-x-full={showMenu}
       >
         <!-- Logo -->
