@@ -3,6 +3,7 @@
   import { base } from "$app/paths"; // Dynamically get the base path
   import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import type { NavigationData } from "$lib/types";
+  import RotatingBurgerMenuButton from "$lib/components/RotatingBurgerMenuButton.svelte";
 
   import "../app.css";
 
@@ -37,18 +38,10 @@
 
 <div class="relative flex min-h-dvh w-full">
   <!-- Sidebar Navigation -->
-  <!-- prettier-ignore -->
-  <button
-    id="toggle_menu"
-    class="fixed top-2 left-2 z-50 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 lg:hidden"
-    class:show-menu={showMenu}
-    class:bg-gold={showMenu}
-    class:bg-navy={!showMenu}
-    onclick={toggleMenu}
-    aria-label="Toggle menu"
-  ></button>
 
-  <nav class="menu pointer-events-none fixed z-40 h-dvh w-full overflow-hidden">
+  <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
+
+  <nav class="menu pointer-events-none fixed z-40 h-lvh w-full overflow-hidden">
     <button
       class="absolute left-0 top-0 h-full w-full cursor-pointer text-inherit lg:hidden"
       class:pointer-events-auto={showMenu}
@@ -104,13 +97,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="flex-1 bg-mint p-8 font-nunito lg:ml-72">
+  <main class="flex-1 bg-mint pb-8 pl-4 pr-4 pt-12 font-nunito lg:ml-72 lg:pl-6 lg:pr-6 lg:pt-8">
     {@render children()}
   </main>
 </div>
-
-<style>
-  #toggle_menu {
-    /* TODO. Burger Menu / Close X */
-  }
-</style>
