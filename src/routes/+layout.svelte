@@ -55,10 +55,10 @@
     getScrollbarWidth();
 
     resizeObserver = new ResizeObserver(() => {
-      console.log("Layout changed!");
+      // console.log("Layout changed!");
+
       // Handle layout changes here
       checkBodyOverflow();
-      console.log(isBodyOverflowing);
     });
     if (container) {
       resizeObserver.observe(container);
@@ -110,7 +110,8 @@
               <li>
                 <a
                   href="{base}{url}"
-                  class="block text-{color ?? 'navy'} hover:text-{hoverColor ?? 'gold'} transition-colors duration-300"
+                  class="inline-block text-{color ?? 'navy'} hover:text-{hoverColor ?? 'gold'} focus:text-{hoverColor ??
+                    'gold'} transition-colors duration-300"
                   onclick={toggleMenu}
                 >
                   {title}
@@ -123,7 +124,7 @@
               <li>
                 <a
                   href="{base}{url}"
-                  class="block text-navy transition-colors duration-300 hover:text-gold"
+                  class="inline-block text-navy transition-colors duration-300 hover:text-gold focus:text-gold"
                   onclick={toggleMenu}
                 >
                   {title}
@@ -137,7 +138,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="flex w-full flex-col bg-mint pb-8 pl-4 pr-4 pt-12 font-nunito lg:ml-72 lg:pl-6 lg:pr-6 lg:pt-8">
+  <main class="flex w-full flex-col bg-mint pb-6 pl-4 pr-4 pt-12 font-nunito lg:ml-72 lg:p-6 lg:pt-8">
     {@render children()}
   </main>
 </div>
