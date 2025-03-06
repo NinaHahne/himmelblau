@@ -6,7 +6,11 @@
   // gsap ease cheatsheet:
   // ease: "none", "power1.in", "power1.out", "power1.inOut", "power2.in", "power2.out", "power2.inOut", "power3.in", "power3.out", "power3.inOut", "power4.in", "power4.out", "power4.inOut", "elastic.in", "elastic.out", "elastic.inOut", "back.in", "back.out", "back.inOut", "bounce.in", "bounce.out", "bounce.inOut", "circ.in", "circ.out", "circ.inOut", "expo.in", "expo.out", "expo.inOut", "sine.in", "sine.out", "sine.inOut"
 
+  let showLogo = $state(false);
+
   onMount(() => {
+    showLogo = true;
+
     const paths = document.querySelectorAll("#himmelblau path") as NodeListOf<SVGPathElement>;
     let durationOfAllPaths: number = 0;
     let delays: number[] = [0];
@@ -59,7 +63,9 @@
   id="svg1"
   stroke="currentColor"
   fill="none"
-  class="h-auto w-full text-navy"
+  class="h-auto w-full text-navy transition-opacity duration-300"
+  class:opacity-0={!showLogo}
+  class:opacity-100={showLogo}
 >
   <defs id="defs1" />
   <g
