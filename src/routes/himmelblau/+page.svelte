@@ -4,6 +4,5 @@
 
 <AnimatedLogo />
 
-<br />
-<h1>Coming Soon: Himmelblau</h1>
+<h1 class="mt-4">Coming Soon: Himmelblau</h1>
 <p>This page is under construction.</p>
