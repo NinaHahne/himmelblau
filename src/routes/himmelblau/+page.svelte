@@ -1,5 +1,5 @@
 <script lang="ts">
-  import AnimatedLogo from "$lib/components/AnimatedLogo.svelte";
+  import AnimatedLogo from "$lib/components/AnimatedLogo3.svelte";
 </script>
 
 <AnimatedLogo />
