@@ -37,12 +37,12 @@
         opacity: 0, // Hide it fully
       });
 
-      // Instantly fade in the path right before the stroke animation starts
+      // Instantly fade in the path when the stroke animation starts
       gsap.to(path, {
         opacity: 1,
         duration: 0.1, // Very quick fade-in
-        delay: delays[index] - 0.1, // Starts just before stroke animation
-        ease: "none",
+        delay: delays[index], // Starts at the same time as the stroke animation
+        ease: "none", // == linear
       });
 
       // Animate stroke separately
