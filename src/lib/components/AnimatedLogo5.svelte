@@ -19,6 +19,13 @@
   onMount(() => {
     showLogo = true;
 
+    const tl = gsap.timeline();
+    // Using "+" and "<" timing controls to simplify sequencing:
+    // "+=0" → Start immediately after the previous animation.
+    // "<" → Start at the same time as the previous animation.
+    // "-=6" → 🔄 go back 6 animations and start at the same time
+    // "-=2.5" → ⏪ Start 2.5s earlier
+
     const paths = document.querySelectorAll("#himmelblau > path") as NodeListOf<SVGPathElement>;
     let durationOfAllPaths: number = 0;
     let delays: number[] = [0];
@@ -31,100 +38,67 @@
       delays.push(delays[index] + duration);
 
       // Ensure paths are completely hidden at the start
-      gsap.set(path, {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-        // strokeDashoffset: length + 2, // Add buffer to prevent early visibility
-        opacity: 0, // Hide it fully
-      });
+      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length, opacity: 0 });
 
-      // Instantly fade in the path when the stroke animation starts
-      gsap.to(path, {
-        opacity: 1,
-        duration: 0.1, // Very quick fade-in
-        delay: delays[index], // Starts at the same time as the stroke animation
-        ease: "none", // == linear
-      });
+      // // Instantly fade in the path when the stroke animation starts
+      // gsap.to(path, {
+      //   opacity: 1,
+      //   duration: 0.1, // Very quick fade-in
+      //   delay: delays[index], // Starts at the same time as the stroke animation
+      //   ease: "none", // == linear
+      // });
 
-      // Animate stroke separately
-      gsap.to(path, {
-        strokeDashoffset: 0, // Reveal stroke
-        duration: duration, // Adjust animation speed as needed
-        ease: pathEases[index],
-        delay: delays[index], // Stagger effect
-      });
+      // // Animate stroke separately
+      // gsap.to(path, {
+      //   strokeDashoffset: 0, // Reveal stroke
+      //   duration: duration, // Adjust animation speed as needed
+      //   ease: pathEases[index],
+      //   delay: delays[index], // Stagger effect
+      // });
+
+      tl.to(path, { opacity: 1, duration: 0.1, ease: "none" }) // Instantly fade in each path
+        .to(
+          path,
+          { strokeDashoffset: 0, duration: duration, ease: pathEases[index] || "none" }, // Animate stroke
+          "<" // Start at the same time as the previous animation
+        );
     });
 
-    // Animate the dot of the 'i' separately
+    // Animate i-dot
     gsap.fromTo("#i-dot", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out", delay: durationOfAllPaths });
 
-    // Animate FLOWER STEM:
+    // 🌿 Animate Flower Stem
     const stem = document.querySelector("#stem") as SVGPathElement;
-    // Ensure paths are completely hidden at the start
     const stemLength = stem.getTotalLength();
     const stemDuration = (stemLength / 60) * 1.5;
     const stemDelay = delays[0] + delays[1];
-    gsap.set("#stem", {
-      strokeDasharray: stemLength,
-      strokeDashoffset: stemLength,
-      opacity: 0,
-    });
-    // Instantly fade in the path when the stroke animation starts
-    gsap.to(stem, {
-      opacity: 1,
-      duration: 0.1,
-      delay: stemDelay,
-      ease: "none",
-    });
-    // Animate stroke separately
-    gsap.to(stem, {
-      strokeDashoffset: 0,
-      duration: stemDuration,
-      ease: "power1.out",
-      delay: stemDelay,
-    });
 
-    // Animate FLOWER LEAF / tilt #h_leaf to the left:
-    const leaf = document.querySelector("#h_leaf") as SVGPathElement;
-    // gsap.set(leaf, { transformOrigin: "center bottom" });
-    gsap.to(leaf, {
-      rotation: -12,
-      duration: 0.5,
-      ease: "power1.out",
-      // repeat: -1,
-      // yoyo: true,
-      delay: stemDelay,
-      transformOrigin: "0% bottom",
-    });
+    // Ensure paths are completely hidden at the start:
+    gsap.set(stem, { strokeDasharray: stemLength, strokeDashoffset: stemLength, opacity: 0 });
+    tl.to(stem, { opacity: 1, duration: 0.1, ease: "power1.inOut" }, "-=6").to(
+      stem,
+      { strokeDashoffset: 0, duration: stemDuration, ease: "none" },
+      "<" // Start at the same time as the previous animation
+    );
 
-    // Animate FLOWER BLUEBELL:
-    gsap.set("#bluebell", { opacity: 0, scale: 0, transformOrigin: "center top" });
+    // 🍃 Tilt Leaf While Stem Grows:
+    tl.to("#h_leaf", { rotation: -12, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" }, "<");
+
+    // 🔵🔔 Animate Bluebell Growing:
+    gsap.set("#bluebell", { opacity: 0, scale: 0, transformOrigin: "center top" }); // Prepare bluebell
     // fade in:
-    gsap.to("#bluebell", {
-      opacity: 1,
-      duration: 0.1,
-      delay: stemDelay + stemDuration,
-      ease: "none",
-    });
+    gsap.to("#bluebell", { opacity: 1, duration: 0.1, delay: stemDelay + stemDuration, ease: "none" });
     // scale from 0 to 1:
-    gsap.to("#bluebell", {
-      scale: 1,
-      duration: 5,
-      ease: "power1.out",
-      delay: stemDelay + stemDuration,
-    });
+    gsap.to("#bluebell", { scale: 1, duration: 5, ease: "power1.out", delay: stemDelay + stemDuration });
     gsap.fromTo(
       "#bluebell",
       { rotation: -10 },
-      {
-        rotation: 0,
-        duration: 1,
-        ease: "power1.out",
-        // repeat: -1,
-        // yoyo: true,
-        delay: stemDelay + stemDuration,
-      }
+      { rotation: 0, duration: 1, ease: "power1.out", delay: stemDelay + stemDuration }
     );
+    // TODO: wäre eleganter, aber läuft etwas zu spät ab. evtl mit labels arbeiten
+    // tl.to("#bluebell", { opacity: 1, duration: 0.1 }, "-=5")
+    //   .to("#bluebell", { scale: 1, duration: 5 }, "<")
+    //   .fromTo("#bluebell", { rotation: -10 }, { rotation: 0, duration: 1 }, "<");
   });
 </script>
 
