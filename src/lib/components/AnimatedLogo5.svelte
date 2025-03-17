@@ -72,6 +72,7 @@
     const stemLength = stem.getTotalLength();
     const stemDuration = (stemLength / 60) * 1.5;
     const stemDelay = delays[0] + delays[1];
+    const bluebellDuration = 5;
 
     // Ensure paths are completely hidden at the start:
     gsap.set(stem, { strokeDasharray: stemLength, strokeDashoffset: stemLength, opacity: 0 });
@@ -85,20 +86,27 @@
     tl.to("#h_leaf", { rotation: -12, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" }, "<");
 
     // 🔵🔔 Animate Bluebell Growing:
-    gsap.set("#bluebell", { opacity: 0, scale: 0, transformOrigin: "center top" }); // Prepare bluebell
-    // fade in:
-    gsap.to("#bluebell", { opacity: 1, duration: 0.1, delay: stemDelay + stemDuration, ease: "none" });
-    // scale from 0 to 1:
-    gsap.to("#bluebell", { scale: 1, duration: 5, ease: "power1.out", delay: stemDelay + stemDuration });
-    gsap.fromTo(
-      "#bluebell",
-      { rotation: -10 },
-      { rotation: 0, duration: 1, ease: "power1.out", delay: stemDelay + stemDuration }
-    );
+    gsap.set("#bluebell", { opacity: 0, scale: 0, transformOrigin: "center top", color: "#5aaefc", fill: "#5aaefc" }); // Prepare bluebell
+
+    // gsap.to("#bluebell", { opacity: 1, duration: 0.1, delay: stemDelay + stemDuration, ease: "none" }); // fade in
+    // gsap.to("#bluebell", { scale: 1, duration: bluebellDuration, ease: "power1.out", delay: stemDelay + stemDuration }); // grow
+    // gsap.fromTo(
+    //   "#bluebell",
+    //   { rotation: -10 },
+    //   { rotation: 0, duration: 1, ease: "power1.out", delay: stemDelay + stemDuration }
+    // ); // tilt
+    // gsap.to("#bluebell", {
+    //   color: "#097ff7",
+    //   duration: 0.2,
+    //   delay: stemDelay + stemDuration + bluebellDuration,
+    //   ease: "none",
+    // }); // change color of stroke
+
     // TODO: wäre eleganter, aber läuft etwas zu spät ab. evtl mit labels arbeiten
-    // tl.to("#bluebell", { opacity: 1, duration: 0.1 }, "-=5")
-    //   .to("#bluebell", { scale: 1, duration: 5 }, "<")
-    //   .fromTo("#bluebell", { rotation: -10 }, { rotation: 0, duration: 1 }, "<");
+    tl.to("#bluebell", { opacity: 1, duration: 0.1, ease: "none" }, "-=5")
+      .to("#bluebell", { scale: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
+      .fromTo("#bluebell", { rotation: -10 }, { rotation: 0, duration: 1 }, "<")
+      .to("#bluebell", { color: "#097ff7", duration: 0.2, ease: "none" }, "+=0");
   });
 </script>
 
