@@ -76,14 +76,14 @@
 
     // Ensure paths are completely hidden at the start:
     gsap.set(stem, { strokeDasharray: stemLength, strokeDashoffset: stemLength, opacity: 0 });
-    tl.to(stem, { opacity: 1, duration: 0.1, ease: "power1.inOut" }, "-=6").to(
+    tl.to(stem, { opacity: 1, duration: 0.1, ease: "none" }, "-=6").to(
       stem,
       { strokeDashoffset: 0, duration: stemDuration, ease: "none" },
       "<" // Start at the same time as the previous animation
     );
 
     // 🍃 Tilt Leaf While Stem Grows:
-    tl.to("#h_leaf", { rotation: -12, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" }, "<");
+    tl.to("#h_leaf", { rotation: -14, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" }, "<");
 
     // 🔵🔔 Animate Bluebell Growing:
     gsap.set("#bluebell", { opacity: 0, scale: 0, transformOrigin: "center top", color: "#5aaefc", fill: "#5aaefc" }); // Prepare bluebell
@@ -103,10 +103,10 @@
     // }); // change color of stroke
 
     // TODO: wäre eleganter, aber läuft etwas zu spät ab. evtl mit labels arbeiten
-    tl.to("#bluebell", { opacity: 1, duration: 0.1, ease: "none" }, "-=5")
+    tl.to("#bluebell", { opacity: 1, duration: 0.1, ease: "none" }, "-=5.3")
       .to("#bluebell", { scale: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
-      .fromTo("#bluebell", { rotation: -10 }, { rotation: 0, duration: 1 }, "<")
-      .to("#bluebell", { color: "#097ff7", duration: 0.2, ease: "none" }, "+=0");
+      .fromTo("#bluebell", { rotation: -10 }, { rotation: 0, duration: 1 }, "<");
+    // .to("#bluebell", { color: "#097ff7", duration: 0.2, ease: "none" }, "+=0");
   });
 </script>
 
@@ -117,7 +117,7 @@
   id="svg1"
   stroke="currentColor"
   fill="none"
-  class="h-auto w-full text-navy transition-opacity duration-300"
+  class="h-auto w-full max-w-[100vh] text-navy transition-opacity duration-300"
   class:opacity-0={!showLogo}
   class:opacity-100={showLogo}
 >
