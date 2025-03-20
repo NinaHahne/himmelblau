@@ -2,6 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* @tailwind utilities; */
+
 :root {
   /* updates in +layout.svelte */
   --scrollbar-width: 0px;

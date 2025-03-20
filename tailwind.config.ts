@@ -53,5 +53,16 @@ export default {
     },
   },
 
-  plugins: [typography, forms, containerQueries],
+  plugins: [
+    typography,
+    forms,
+    containerQueries,
+    function ({ addVariant }) {
+      // Prevents hover sticking on touch devices
+      // NOTE: the following media queries work fine to detect hover properly on iPhones but not on Android devices:
+      // (any-hover: none) / (hover: none) / (hover: hover)
+      // only the following works on iPhones & Android:
+      addVariant('hoverable', '@media (any-hover: hover) and (pointer: fine)');
+    },
+  ],
 } satisfies Config;
