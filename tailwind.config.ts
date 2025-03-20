@@ -30,6 +30,7 @@ export default {
 
         // Links:
         navy: '#1e3a5f', // Navy Blue
+        'navy-light': '#274a79', // Slightly Lighter Navy Blue
         gold: '#f0a500', // Soft Gold or #d1a854
         coral: '#ff725e', // Pastel Coral
 

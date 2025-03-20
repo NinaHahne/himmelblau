@@ -16,15 +16,18 @@
     "none", // 'au'
   ];
 
+  let tl: gsap.core.Timeline; // Declare timeline globally
+
+  // Using "+" and "<" timing controls to simplify sequencing:
+  // "+=0" → Start immediately after the previous animation.
+  // "<" → Start at the same time as the previous animation.
+  // "-=6" → 🔄 go back 6 animations and start at the same time
+  // "-=2.5" → ⏪ Start 2.5s earlier
+
   onMount(() => {
     showLogo = true;
 
-    const tl = gsap.timeline();
-    // Using "+" and "<" timing controls to simplify sequencing:
-    // "+=0" → Start immediately after the previous animation.
-    // "<" → Start at the same time as the previous animation.
-    // "-=6" → 🔄 go back 6 animations and start at the same time
-    // "-=2.5" → ⏪ Start 2.5s earlier
+    tl = gsap.timeline({ paused: true }); // Timeline starts paused
 
     const paths = document.querySelectorAll("#himmelblau > path") as NodeListOf<SVGPathElement>;
     let durationOfAllPaths: number = 0;
@@ -64,21 +67,27 @@
         );
     });
 
-    // Animate i-dot
-    gsap.fromTo("#i-dot", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out", delay: durationOfAllPaths });
+    // 📍 Animate i-dot:
+    // gsap.fromTo("#i-dot", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out", delay: durationOfAllPaths });
+    gsap.set("#i-dot", { opacity: 0, y: -1.4, scale: 0.2, transformOrigin: "center top" });
+    tl.to("#i-dot", { opacity: 1, duration: 0.2, ease: "none" }, "+=0").to(
+      "#i-dot",
+      { y: 0, scale: 1, duration: 0.5, ease: "back.out" },
+      "<"
+    );
 
     // 🌿 Animate Flower Stem
     const stem = document.querySelector("#stem") as SVGPathElement;
     const stemLength = stem.getTotalLength();
-    const stemDuration = (stemLength / 60) * 1.5;
+    const stemDuration = (stemLength / 60) * 1.6;
     const stemDelay = delays[0] + delays[1];
-    const bluebellDuration = 5;
+    const bluebellDuration = 6;
 
     // Ensure paths are completely hidden at the start:
     gsap.set(stem, { strokeDasharray: stemLength, strokeDashoffset: stemLength, opacity: 0 });
     tl.to(stem, { opacity: 1, duration: 0.1, ease: "none" }, "-=6").to(
       stem,
-      { strokeDashoffset: 0, duration: stemDuration, ease: "none" },
+      { strokeDashoffset: 0, duration: stemDuration, ease: "sine.out" },
       "<" // Start at the same time as the previous animation
     );
 
@@ -86,40 +95,41 @@
     tl.to("#h_leaf", { rotation: -14, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" }, "<");
 
     // 🔵🔔 Animate Bluebell Growing:
-    gsap.set("#bluebell", { opacity: 0, scale: 0, transformOrigin: "center top", color: "#5aaefc", fill: "#5aaefc" }); // Prepare bluebell
+    gsap.set("#bluebell", { opacity: 0, scale: 0, transformOrigin: "52% top", color: "#5aaefc", fill: "#5aaefc" }); // Prepare bluebell
 
-    // gsap.to("#bluebell", { opacity: 1, duration: 0.1, delay: stemDelay + stemDuration, ease: "none" }); // fade in
-    // gsap.to("#bluebell", { scale: 1, duration: bluebellDuration, ease: "power1.out", delay: stemDelay + stemDuration }); // grow
-    // gsap.fromTo(
-    //   "#bluebell",
-    //   { rotation: -10 },
-    //   { rotation: 0, duration: 1, ease: "power1.out", delay: stemDelay + stemDuration }
-    // ); // tilt
-    // gsap.to("#bluebell", {
-    //   color: "#097ff7",
-    //   duration: 0.2,
-    //   delay: stemDelay + stemDuration + bluebellDuration,
-    //   ease: "none",
-    // }); // change color of stroke
-
-    // TODO: wäre eleganter, aber läuft etwas zu spät ab. evtl mit labels arbeiten
     tl.to("#bluebell", { opacity: 1, duration: 0.1, ease: "none" }, "-=5.3")
-      .to("#bluebell", { scale: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
-      .fromTo("#bluebell", { rotation: -10 }, { rotation: 0, duration: 1 }, "<");
-    // .to("#bluebell", { color: "#097ff7", duration: 0.2, ease: "none" }, "+=0");
+      // .to("#bluebell", { scale: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
+      .to("#bluebell", { scaleY: 1, duration: bluebellDuration * 0.85, ease: "power1.out" }, "<")
+      .to("#bluebell", { scaleX: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
+      .fromTo("#bluebell", { rotation: -10 }, { rotation: 0, duration: 0.5 }, "<");
+    // with navy outline, when bluebell growing is finished:
+    // .to("#bluebell", { color: "#5aaefc", duration: 0.2, ease: "none" }, "+=0");
+
+    // ✅ **Play animation on first mount**
+    tl.play();
   });
+
+  // ✅ **Restart Animation on Click**
+  function restartAnimation() {
+    tl.restart(); // Restarts timeline from the beginning
+  }
 </script>
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 164.76431 100.27396"
   version="1.1"
-  id="svg1"
+  id="bluebell_filled"
   stroke="currentColor"
   fill="none"
-  class="h-auto w-full max-w-[100vh] text-navy transition-opacity duration-300"
+  class="text-navy-light h-auto w-full max-w-[100vh] transition-opacity duration-300 focus:outline-none"
   class:opacity-0={!showLogo}
   class:opacity-100={showLogo}
+  aria-label="Restart animation"
+  role="button"
+  tabindex="0"
+  onclick={restartAnimation}
+  onkeydown={restartAnimation}
 >
   <defs id="defs1" />
   <g
