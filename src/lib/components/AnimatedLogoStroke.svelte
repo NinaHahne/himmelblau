@@ -24,6 +24,20 @@
   // "-=6" → 🔄 go back 6 animations and start at the same time
   // "-=2.5" → ⏪ Start 2.5s earlier
 
+  let CustomEase: any;
+
+  onMount(async () => {
+    if (typeof window !== "undefined") {
+      // ⬇️ dynamically import only on the client to avoid SSR problems
+      const { CustomEase: CE } = await import("gsap/CustomEase");
+      CustomEase = CE;
+
+      gsap.registerPlugin(CustomEase);
+
+      CustomEase.create("bellEase", "M0,0 C0.360,0.435 0.615,0.560 1,1");
+    }
+  });
+
   onMount(() => {
     showLogo = true;
 
@@ -87,13 +101,14 @@
     // 🔵🔔 Animate Bluebell Stroke:
     const bluebell = document.querySelector("#bluebell_stroke #bluebell") as SVGPathElement;
     const bluebellLength = bluebell.getTotalLength();
-    const bluebellDuration = (bluebellLength / 60) * 2.2;
+    const bluebellDuration = (bluebellLength / 60) * 2;
 
     // Ensure paths are completely hidden at the start:
     gsap.set(bluebell, { strokeDasharray: bluebellLength, strokeDashoffset: bluebellLength, opacity: 0 });
-    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=1.8").to(
+    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=1.745").to(
+      // "-=1.8"
       bluebell,
-      { strokeDashoffset: 0, duration: bluebellDuration, ease: "none" },
+      { strokeDashoffset: 0, duration: bluebellDuration, ease: "bellEase" },
       "<" // Start at the same time as the previous animation
     );
 
