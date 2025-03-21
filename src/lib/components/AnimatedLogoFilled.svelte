@@ -128,7 +128,7 @@
   version="1.1"
   stroke="currentColor"
   fill="none"
-  class="h-auto w-full max-w-[100vh] text-navy-light transition-opacity duration-300 focus:outline-none"
+  class="h-auto w-full max-w-[100vh] text-navy-light transition-opacity duration-300 focus:outline-none md:w-80"
   class:opacity-0={!showLogo}
   class:opacity-100={showLogo}
   aria-label="Restart animation"

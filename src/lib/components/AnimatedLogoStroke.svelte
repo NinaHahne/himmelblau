@@ -3,7 +3,7 @@
   import { gsap } from "gsap";
   // import { DrawSVGPlugin } from "gsap/DrawSVGPlugin"; // this would be optimal but is only accessible with a payed Club Membership
 
-  // gsap ease cheatsheet:
+  // gsap ease cheatsheet / Core:
   // ease: "none", "power1.in", "power1.out", "power1.inOut", "power2.in", "power2.out", "power2.inOut", "power3.in", "power3.out", "power3.inOut", "power4.in", "power4.out", "power4.inOut", "elastic.in", "elastic.out", "elastic.inOut", "back.in", "back.out", "back.inOut", "bounce.in", "bounce.out", "bounce.inOut", "circ.in", "circ.out", "circ.inOut", "expo.in", "expo.out", "expo.inOut", "sine.in", "sine.out", "sine.inOut"
 
   let showLogo = $state(false);
@@ -66,12 +66,12 @@
     // 🌿 Animate Flower Stem
     const stem = document.querySelector("#bluebell_stroke #stem") as SVGPathElement;
     const stemLength = stem.getTotalLength();
-    const stemDuration = (stemLength / 60) * 2;
+    const stemDuration = (stemLength / 60) * 2.6;
     const stemDelay = delays[0] + delays[1];
 
     // Ensure paths are completely hidden at the start:
     gsap.set(stem, { strokeDasharray: stemLength, strokeDashoffset: stemLength, opacity: 0 });
-    tl.to(stem, { opacity: 1, duration: 0.1, ease: "none" }, "-=6").to(
+    tl.to(stem, { opacity: 1, duration: 0.1, ease: "none" }, "-=3").to(
       stem,
       { strokeDashoffset: 0, duration: stemDuration, ease: "none" },
       "<" // Start at the same time as the previous animation
@@ -87,10 +87,11 @@
     // 🔵🔔 Animate Bluebell Stroke:
     const bluebell = document.querySelector("#bluebell_stroke #bluebell") as SVGPathElement;
     const bluebellLength = bluebell.getTotalLength();
-    const bluebellDuration = (bluebellLength / 60) * 2;
+    const bluebellDuration = (bluebellLength / 60) * 2.2;
+
     // Ensure paths are completely hidden at the start:
     gsap.set(bluebell, { strokeDasharray: bluebellLength, strokeDashoffset: bluebellLength, opacity: 0 });
-    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=5.1").to(
+    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=1.8").to(
       bluebell,
       { strokeDashoffset: 0, duration: bluebellDuration, ease: "none" },
       "<" // Start at the same time as the previous animation
@@ -113,7 +114,7 @@
   version="1.1"
   stroke="currentColor"
   fill="none"
-  class="h-auto w-full max-w-[100vh] text-navy-light transition-opacity duration-300 focus:outline-none"
+  class="h-auto w-full max-w-[100vh] text-navy-light transition-opacity duration-300 focus:outline-none md:w-80"
   class:opacity-0={!showLogo}
   class:opacity-100={showLogo}
   aria-label="Restart animation"
