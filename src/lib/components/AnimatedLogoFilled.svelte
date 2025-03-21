@@ -93,7 +93,11 @@
     );
 
     // 🍃 Tilt Leaf While Stem Grows:
-    tl.to("#h_leaf", { rotation: -14, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" }, "<");
+    tl.to(
+      "#bluebell_filled #h_leaf",
+      { rotation: -14, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" },
+      "<"
+    );
 
     // 🔵🔔 Animate Bluebell Growing:
     const bluebell = document.querySelector("#bluebell_filled #bluebell") as SVGPathElement;
