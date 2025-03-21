@@ -19,7 +19,7 @@
   let tl: gsap.core.Timeline; // Declare timeline globally
 
   // Using "+" and "<" timing controls to simplify sequencing:
-  // "+=0" → Start immediately after the previous animation.
+  // "+=0" / ">" → Start immediately after the previous animation.
   // "<" → Start at the same time as the previous animation.
   // "-=6" → 🔄 go back 6 animations and start at the same time
   // "-=2.5" → ⏪ Start 2.5s earlier
@@ -29,13 +29,14 @@
 
     tl = gsap.timeline({ paused: true }); // Timeline starts paused
 
-    const paths = document.querySelectorAll("#bluebell_filled #himmelblau > path") as NodeListOf<SVGPathElement>;
+    const paths = document.querySelectorAll("#bluebell_stroke #himmelblau > path") as NodeListOf<SVGPathElement>;
     let durationOfAllPaths: number = 0;
     let delays: number[] = [0];
 
     paths.forEach((path, index) => {
       const length = path.getTotalLength(); // Get total length of the path
       const duration = (length / 60) * 1.0;
+      const pathId = path.id;
 
       durationOfAllPaths += duration;
       delays.push(delays[index] + duration);
@@ -43,32 +44,17 @@
       // Ensure paths are completely hidden at the start
       gsap.set(path, { strokeDasharray: length, strokeDashoffset: length, opacity: 0 });
 
-      // // Instantly fade in the path when the stroke animation starts
-      // gsap.to(path, {
-      //   opacity: 1,
-      //   duration: 0.1, // Very quick fade-in
-      //   delay: delays[index], // Starts at the same time as the stroke animation
-      //   ease: "none", // == linear
-      // });
-
-      // // Animate stroke separately
-      // gsap.to(path, {
-      //   strokeDashoffset: 0, // Reveal stroke
-      //   duration: duration, // Adjust animation speed as needed
-      //   ease: pathEases[index],
-      //   delay: delays[index], // Stagger effect
-      // });
-
       tl.to(path, { opacity: 1, duration: 0.1, ease: "none" }) // Instantly fade in each path
         .to(
           path,
           { strokeDashoffset: 0, duration: duration, ease: pathEases[index] || "none" }, // Animate stroke
           "<" // Start at the same time as the previous animation
+          // `${pathId}`
         );
     });
 
     // 📍 Animate i-dot:
-    const iDot = document.querySelector("#bluebell_filled #i-dot") as SVGPathElement;
+    const iDot = document.querySelector("#bluebell_stroke #i-dot") as SVGPathElement;
     // gsap.fromTo("#i-dot", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out", delay: durationOfAllPaths });
     gsap.set(iDot, { opacity: 0, y: -1.4, scale: 0.2, transformOrigin: "center top" });
     tl.to(iDot, { opacity: 1, duration: 0.2, ease: "none" }, "+=0").to(
@@ -78,11 +64,10 @@
     );
 
     // 🌿 Animate Flower Stem
-    const stem = document.querySelector("#bluebell_filled #stem") as SVGPathElement;
+    const stem = document.querySelector("#bluebell_stroke #stem") as SVGPathElement;
     const stemLength = stem.getTotalLength();
     const stemDuration = (stemLength / 60) * 2;
     const stemDelay = delays[0] + delays[1];
-    const bluebellDuration = 5.6;
 
     // Ensure paths are completely hidden at the start:
     gsap.set(stem, { strokeDasharray: stemLength, strokeDashoffset: stemLength, opacity: 0 });
@@ -93,19 +78,23 @@
     );
 
     // 🍃 Tilt Leaf While Stem Grows:
-    tl.to("#h_leaf", { rotation: -14, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" }, "<");
+    tl.to(
+      "#bluebell_stroke #h_leaf",
+      { rotation: -14, duration: 0.4, ease: "power2.out", transformOrigin: "0% bottom" },
+      "<"
+    );
 
-    // 🔵🔔 Animate Bluebell Growing:
-    const bluebell = document.querySelector("#bluebell_filled #bluebell") as SVGPathElement;
-    gsap.set(bluebell, { opacity: 0, scale: 0, transformOrigin: "52% top", color: "#5aaefc", fill: "#5aaefc" }); // Prepare bluebell
-
-    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=5")
-      // .to("#bluebell", { scale: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
-      .to(bluebell, { scaleY: 1, duration: bluebellDuration * 0.85, ease: "power1.out" }, "<")
-      .to(bluebell, { scaleX: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
-      .fromTo(bluebell, { rotation: -10 }, { rotation: 0, duration: 0.5 }, "<");
-    // with navy outline, when bluebell growing is finished:
-    // .to(bluebell, { color: "#5aaefc", duration: 0.2, ease: "none" }, "+=0");
+    // 🔵🔔 Animate Bluebell Stroke:
+    const bluebell = document.querySelector("#bluebell_stroke #bluebell") as SVGPathElement;
+    const bluebellLength = bluebell.getTotalLength();
+    const bluebellDuration = (bluebellLength / 60) * 2;
+    // Ensure paths are completely hidden at the start:
+    gsap.set(bluebell, { strokeDasharray: bluebellLength, strokeDashoffset: bluebellLength, opacity: 0 });
+    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=5.1").to(
+      bluebell,
+      { strokeDashoffset: 0, duration: bluebellDuration, ease: "none" },
+      "<" // Start at the same time as the previous animation
+    );
 
     // ✅ **Play animation on first mount**
     tl.play();
@@ -118,7 +107,7 @@
 </script>
 
 <svg
-  id="bluebell_filled"
+  id="bluebell_stroke"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 164.76431 100.27396"
   version="1.1"
@@ -184,7 +173,7 @@
     <g id="flower">
       <path
         id="stem"
-        style="fill:none;stroke-width:0.210773;stroke-dasharray:none;"
+        style="fill:none;stroke-width:0.2;stroke-dasharray:none;"
         d="M 43.547491,64.528292 C 46.452855,48.194418 53.300106,44.426777 59.562083,44.704685"
       />
       <path
