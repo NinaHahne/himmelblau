@@ -80,7 +80,7 @@
     // 🌿 Animate Flower Stem
     const stem = document.querySelector("#bluebell_stroke #stem") as SVGPathElement;
     const stemLength = stem.getTotalLength();
-    const stemDuration = (stemLength / 60) * 2.6;
+    const stemDuration = (stemLength / 60) * 2.4;
     const stemDelay = delays[0] + delays[1];
 
     // Ensure paths are completely hidden at the start:
@@ -101,11 +101,11 @@
     // 🔵🔔 Animate Bluebell Stroke:
     const bluebell = document.querySelector("#bluebell_stroke #bluebell") as SVGPathElement;
     const bluebellLength = bluebell.getTotalLength();
-    const bluebellDuration = (bluebellLength / 60) * 2;
+    const bluebellDuration = (bluebellLength / 60) * 2.2;
 
     // Ensure paths are completely hidden at the start:
     gsap.set(bluebell, { strokeDasharray: bluebellLength, strokeDashoffset: bluebellLength, opacity: 0 });
-    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=1.745").to(
+    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=1.9").to(
       // "-=1.8"
       bluebell,
       { strokeDashoffset: 0, duration: bluebellDuration, ease: "bellEase" },

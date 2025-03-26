@@ -80,13 +80,13 @@
     // 🌿 Animate Flower Stem
     const stem = document.querySelector("#bluebell_filled #stem") as SVGPathElement;
     const stemLength = stem.getTotalLength();
-    const stemDuration = (stemLength / 60) * 2;
+    const stemDuration = (stemLength / 60) * 2.2;
     const stemDelay = delays[0] + delays[1];
-    const bluebellDuration = 5.6;
+    const bluebellDuration = 1.9;
 
     // Ensure paths are completely hidden at the start:
     gsap.set(stem, { strokeDasharray: stemLength, strokeDashoffset: stemLength, opacity: 0 });
-    tl.to(stem, { opacity: 1, duration: 0.1, ease: "none" }, "-=6").to(
+    tl.to(stem, { opacity: 1, duration: 0.1, ease: "none" }, "-=3").to(
       stem,
       { strokeDashoffset: 0, duration: stemDuration, ease: "none" },
       "<" // Start at the same time as the previous animation
@@ -103,7 +103,7 @@
     const bluebell = document.querySelector("#bluebell_filled #bluebell") as SVGPathElement;
     gsap.set(bluebell, { opacity: 0, scale: 0, transformOrigin: "52% top", color: "#5aaefc", fill: "#5aaefc" }); // Prepare bluebell
 
-    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=5")
+    tl.to(bluebell, { opacity: 1, duration: 0.1, ease: "none" }, "-=2")
       // .to("#bluebell", { scale: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
       .to(bluebell, { scaleY: 1, duration: bluebellDuration * 0.85, ease: "power1.out" }, "<")
       .to(bluebell, { scaleX: 1, duration: bluebellDuration, ease: "power1.out" }, "<")
