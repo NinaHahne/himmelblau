@@ -4,6 +4,7 @@
   import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import type { NavigationData } from "$lib/types";
   import RotatingBurgerMenuButton from "$lib/components/RotatingBurgerMenuButton.svelte";
+  import AnimatedLogoMenu from "$lib/components/AnimatedLogoMenu.svelte";
 
   import "../app.css";
 
@@ -98,9 +99,12 @@
         class="pointer-events-auto relative -left-full flex h-full w-full flex-col overflow-auto bg-sky-blue p-6 pt-8 font-amaticSC text-gray-800 transition-transform duration-300 lg:left-0"
         class:translate-x-full={showMenu}
       >
-        <!-- Logo -->
         <a href="{base}/" aria-label="Himmelblau Startseite" class="mb-12 block" onclick={toggleMenu}>
-          <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" />
+          <!-- Old Logo -->
+          <!-- <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" /> -->
+          <div class="logo-wrapper relative -ml-2 w-auto overflow-hidden">
+            <AnimatedLogoMenu />
+          </div>
         </a>
 
         <!-- Navigation Links -->

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths"; // Dynamically get the base path
   import AnimatedLogoFilled from "$lib/components/AnimatedLogoFilled.svelte";
   import AnimatedLogoStroke from "$lib/components/AnimatedLogoStroke.svelte";
   import AnimatedLogoStrokeFilled from "$lib/components/AnimatedLogoStrokeFilled.svelte";
@@ -10,3 +11,9 @@
 <AnimatedLogoFilled />
 <AnimatedLogoStroke />
 <AnimatedLogoStrokeFilled />
+<br />
+<p>Old Logo:</p>
+<br />
+<a href="{base}/" aria-label="Himmelblau Startseite" class="block w-full max-w-[100vh] md:w-80">
+  <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" />
+</a>
