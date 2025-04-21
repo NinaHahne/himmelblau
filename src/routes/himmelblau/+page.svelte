@@ -9,10 +9,19 @@
 <h1 class="mt-4">Coming Soon: Himmelblau</h1>
 <p>This page is under construction.</p>
 <p class="hoverable:hover:text-coral">Logo Testing: click on the logo to restart the animation</p>
+<br />
+<h2><strong>A)</strong> "wachsende" Blüte:</h2>
 <AnimatedLogoFilled />
+<br />
+<h2><strong>B)</strong> Blüte wie Schrift animiert:</h2>
 <AnimatedLogoStroke />
+<br />
+<h2><strong>C)</strong> so wie B) aber mit blauer Füllung zum Schluss:</h2>
 <AnimatedLogoStrokeFilled />
+<br />
+<h2><strong>D)</strong> so wie C), aber nur die Blume ist animiert:</h2>
 <AnimatedLogoOnlyFlower />
+<br />
 <br />
 <p>Old Logo:</p>
 <br />
