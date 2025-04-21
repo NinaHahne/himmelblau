@@ -8,6 +8,9 @@
 
   let showLogo = $state(false);
 
+  let logoOnlyFlower: SVGSVGElement;
+  let initialDelay = 0.4;
+
   let stem: SVGPathElement;
   let leaf: SVGPathElement;
   let bluebell: SVGPathElement;
@@ -40,6 +43,11 @@
 
     tl = gsap.timeline({ paused: true }); // Timeline starts paused
 
+    // TODO: hide entire logo
+    // gsap.set(logoOnlyFlower, { opacity: 0 });
+    // tl.to(logoOnlyFlower, { opacity: 0, duration: 0.1, ease: "none" });
+    // tl.to(logoOnlyFlower, { opacity: 1, duration: initialDelay, ease: "none" }, "+=0");
+
     // 🌿 Animate Flower Stem
     const stemLength = stem.getTotalLength();
     const stemDuration = (stemLength / 60) * 2.4;
@@ -47,7 +55,7 @@
 
     // Ensure paths are completely hidden at the start:
     gsap.set(stem, { strokeDasharray: stemLength, strokeDashoffset: stemLength, opacity: 0 });
-    tl.to(stem, { opacity: 1, duration: 0.1, ease: "none", delay: stemDelay }).to(
+    tl.to(stem, { opacity: 1, duration: 0.1, ease: "none", delay: stemDelay }, "+=0").to(
       stem,
       { strokeDashoffset: 0, duration: stemDuration, ease: "none" },
       "<" // Start at the same time as the previous animation
@@ -98,6 +106,7 @@
 
 <svg
   id="logo_only_flower"
+  bind:this={logoOnlyFlower}
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 164.76431 100.27396"
   version="1.1"
