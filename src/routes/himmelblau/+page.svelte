@@ -3,6 +3,7 @@
   import AnimatedLogoFilled from "$lib/components/AnimatedLogoFilled.svelte";
   import AnimatedLogoStroke from "$lib/components/AnimatedLogoStroke.svelte";
   import AnimatedLogoStrokeFilled from "$lib/components/AnimatedLogoStrokeFilled.svelte";
+  import AnimatedLogoOnlyFlower from "$lib/components/AnimatedLogoOnlyFlower.svelte";
 </script>
 
 <h1 class="mt-4">Coming Soon: Himmelblau</h1>
@@ -11,6 +12,7 @@
 <AnimatedLogoFilled />
 <AnimatedLogoStroke />
 <AnimatedLogoStrokeFilled />
+<AnimatedLogoOnlyFlower />
 <br />
 <p>Old Logo:</p>
 <br />
