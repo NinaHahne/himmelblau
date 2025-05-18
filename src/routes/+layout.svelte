@@ -4,7 +4,7 @@
   import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import type { NavigationData } from "$lib/types";
   import RotatingBurgerMenuButton from "$lib/components/RotatingBurgerMenuButton.svelte";
-  import AnimatedLogoMenu from "$lib/components/AnimatedLogoMenu.svelte";
+  import AnimatedLogoOnlyFlowerMenu from "$lib/components/AnimatedLogoOnlyFlowerMenu.svelte";
 
   import "../app.css";
 
@@ -35,6 +35,8 @@
   let navigation = $state<NavigationData | null>(null);
   let showMenu: boolean = $state(false);
 
+  let showNavigation = $state(false);
+
   const toggleMenu = () => {
     // Check screen size before toggling
     if (window.matchMedia("(max-width: 1023px)").matches) {
@@ -64,6 +66,8 @@
     if (container) {
       resizeObserver.observe(container);
     }
+
+    showNavigation = true;
   });
 
   onDestroy(() => {
@@ -103,12 +107,16 @@
           <!-- Old Logo -->
           <!-- <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" /> -->
           <div class="logo-wrapper relative -ml-2 w-auto overflow-hidden">
-            <AnimatedLogoMenu />
+            <AnimatedLogoOnlyFlowerMenu />
           </div>
         </a>
 
         <!-- Navigation Links -->
-        <section class="flex h-full flex-col justify-between gap-4">
+        <section
+          class="flex h-full flex-col justify-between gap-4 transition-opacity duration-1000"
+          class:opacity-0={!showNavigation}
+          class:opacity-100={showNavigation}
+        >
           <ul class="space-y-4 text-[46px] leading-none">
             {#each navigation?.navLinks ?? [] as { title, url, color, hoverColor }}
               <li>

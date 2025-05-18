@@ -19,11 +19,11 @@
 <h2><strong>C)</strong> so wie B) aber mit blauer Füllung zum Schluss:</h2>
 <AnimatedLogoStrokeFilled />
 <br />
-<h2><strong>D)</strong> so wie C), aber nur die Blume ist animiert:</h2>
+<h2><strong>D)</strong> so wie C), aber nur die Blume ist animiert & das Blatt ist etwas größer:</h2>
 <AnimatedLogoOnlyFlower />
 <br />
 <br />
-<p>Old Logo:</p>
+<p>Altes Logo:</p>
 <br />
 <a href="{base}/" aria-label="Himmelblau Startseite" class="block w-full max-w-[100vh] md:w-80">
   <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" />

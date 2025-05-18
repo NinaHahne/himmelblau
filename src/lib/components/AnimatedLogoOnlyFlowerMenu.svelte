@@ -8,8 +8,8 @@
 
   let showLogo = $state(false);
 
-  let logoOnlyFlower: SVGSVGElement;
-  let initialDelay = 0;
+  let logoOnlyFlowerMenu: SVGSVGElement;
+  let initialDelay = 1; // in seconds. corresponds to opacity transition duration (duration-1000 in tailwind)
 
   let stem: SVGPathElement;
   let leaf: SVGPathElement;
@@ -39,9 +39,7 @@
   });
 
   onMount(() => {
-    setTimeout(() => {
-      showLogo = true;
-    });
+    showLogo = true;
 
     tl = gsap.timeline({ paused: true }); // Timeline starts paused
 
@@ -101,21 +99,19 @@
 </script>
 
 <svg
-  id="logo_only_flower"
-  bind:this={logoOnlyFlower}
+  id="logo_menu"
+  bind:this={logoOnlyFlowerMenu}
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 164.76431 100.27396"
   version="1.1"
   stroke="currentColor"
   fill="none"
-  class="h-auto w-full max-w-[100vh] text-navy-light transition-opacity duration-300 focus:outline-none md:w-80"
+  class="h-auto w-full translate-x-[1%] text-navy-light transition-opacity duration-1000 focus:outline-none"
   class:opacity-0={!showLogo}
   class:opacity-100={showLogo}
-  aria-label="Restart animation"
+  aria-label="Homepage"
   role="button"
   tabindex="0"
-  onclick={restartAnimation}
-  onkeydown={restartAnimation}
 >
   <defs id="defs1">
     <!-- not in use: -->
