@@ -5,6 +5,7 @@
   import type { NavigationData } from "$lib/types";
   import RotatingBurgerMenuButton from "$lib/components/RotatingBurgerMenuButton.svelte";
   import AnimatedLogoOnlyFlowerMenu from "$lib/components/AnimatedLogoOnlyFlowerMenu.svelte";
+  import LogoPlaceholder from "$lib/components/LogoPlaceholder.svelte";
 
   import "../app.css";
 
@@ -44,6 +45,10 @@
     }
   };
 
+  const toggleMenuIfOpen = () => {
+    !showMenu || toggleMenu();
+  };
+
   // Fetch navigation data when the component loads
   onMount(async () => {
     // ✅ Fetch only once when the component mounts
@@ -78,15 +83,29 @@
 
 <div
   bind:this={container}
-  class="relative flex min-h-dvh w-full"
+  class="relative flex min-h-dvh w-full flex-col"
   class:overflowing={isBodyOverflowing}
   class:show-menu={showMenu}
 >
   <!-- Sidebar Navigation -->
 
+  <div class="logo-wrapper relative w-72 px-6 pt-2">
+    <LogoPlaceholder />
+  </div>
+
+  <div class="relative z-20 backdrop-blur-[3px] lg:backdrop-blur-none"></div>
+
+  <nav class="fixed top-0 z-40 w-full lg:w-auto">
+    <div class="logo-wrapper relative w-72 px-6 pt-2">
+      <a href="{base}/" aria-label="Himmelblau Startseite" class="relative -ml-2 block" onclick={toggleMenuIfOpen}>
+        <AnimatedLogoOnlyFlowerMenu />
+      </a>
+    </div>
+  </nav>
+
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
 
-  <nav class="menu pointer-events-none fixed inset-0 z-40 h-auto min-h-dvh w-full overflow-hidden">
+  <nav class="menu pointer-events-none fixed inset-0 z-30 h-auto min-h-dvh w-full overflow-hidden">
     <button
       class="absolute left-0 top-0 h-full w-full cursor-pointer text-inherit lg:hidden"
       class:pointer-events-auto={showMenu}
@@ -103,13 +122,11 @@
         class="pointer-events-auto relative -left-full flex h-full w-full flex-col overflow-auto bg-sky-blue p-6 pt-2 font-amaticSC text-gray-800 transition-transform duration-300 lg:left-0"
         class:translate-x-full={showMenu}
       >
-        <a href="{base}/" aria-label="Himmelblau Startseite" class="mb-12 block" onclick={toggleMenu}>
-          <!-- Old Logo -->
-          <!-- <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" /> -->
-          <div class="logo-wrapper relative -ml-2 w-auto overflow-hidden">
-            <AnimatedLogoOnlyFlowerMenu />
-          </div>
-        </a>
+        <!-- Old Logo -->
+        <!-- <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" /> -->
+        <div class="logo-wrapper relative -ml-2 mb-12 w-auto">
+          <LogoPlaceholder />
+        </div>
 
         <!-- Navigation Links -->
         <section
@@ -150,7 +167,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="flex w-full flex-col bg-mint pb-6 pl-4 pr-4 pt-12 font-nunito lg:ml-72 lg:p-6 lg:pt-8">
+  <main class="flex w-auto flex-col bg-mint px-4 pb-6 pt-12 font-nunito lg:ml-72 lg:p-6 lg:pt-8">
     {@render children()}
   </main>
 </div>
