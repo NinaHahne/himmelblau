@@ -1,2 +1,2 @@
-<h1>Coming Soon: Blüten Spuren</h1>
-<p>This page is under construction.</p>
+<h1>Coming Soon: Blüten Spuren 🌸</h1>
+<p>🚧 This page is under construction. 🏗️</p>

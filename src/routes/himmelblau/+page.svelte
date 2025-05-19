@@ -6,9 +6,9 @@
   import AnimatedLogoOnlyFlower from "$lib/components/AnimatedLogoOnlyFlower.svelte";
 </script>
 
-<h1 class="mt-4">Coming Soon: Himmelblau</h1>
-<p>This page is under construction.</p>
-<p class="hoverable:hover:text-coral">Logo Testing: click on the logo to restart the animation</p>
+<h1 class="mt-4">Coming Soon: Himmelblau 💙</h1>
+<p>🚧 This page is under construction. 🏗️</p>
+<p class="hoverable:hover:text-coral">Logos testen: Klick auf das Logo, um die Animation neu zu starten</p>
 <br />
 <h2><strong>A)</strong> "wachsende" Blüte:</h2>
 <AnimatedLogoFilled />
@@ -19,7 +19,7 @@
 <h2><strong>C)</strong> so wie B) aber mit blauer Füllung zum Schluss:</h2>
 <AnimatedLogoStrokeFilled />
 <br />
-<h2><strong>D)</strong> so wie C), aber nur die Blume ist animiert & das Blatt ist etwas größer:</h2>
+<h2><strong>D) aktuelles Logo, </strong> so wie C), aber nur die Blume ist animiert:</h2>
 <AnimatedLogoOnlyFlower />
 <br />
 <br />
