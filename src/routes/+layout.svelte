@@ -89,13 +89,13 @@
 >
   <!-- Sidebar Navigation -->
 
-  <div class="logo-wrapper relative w-72 px-6 pt-2">
-    <LogoPlaceholder />
+  <div class="blur-spacer mask-fade-bottom-edge sticky top-0 z-10 pb-[5%] backdrop-blur-[4px] lg:hidden">
+    <div class="logo-wrapper -ml-2 w-[18.5rem] px-6 pt-2">
+      <LogoPlaceholder />
+    </div>
   </div>
 
-  <div class="relative z-20 backdrop-blur-[3px] lg:backdrop-blur-none"></div>
-
-  <nav class="fixed top-0 z-40 w-full lg:w-auto">
+  <nav class="fixed top-0 z-40 w-auto">
     <div class="logo-wrapper relative w-72 px-6 pt-2">
       <a href="{base}/" aria-label="Himmelblau Startseite" class="relative -ml-2 block" onclick={toggleMenuIfOpen}>
         <AnimatedLogoOnlyFlowerMenu />
@@ -113,7 +113,7 @@
       aria-label="Close menu"
     >
       <span
-        class="relative block h-full w-full opacity-0 backdrop-blur-[3px] transition-opacity duration-300"
+        class="relative block h-full w-full opacity-0 backdrop-blur-[4px] transition-opacity duration-300"
         class:opacity-100={showMenu}
       ></span>
     </button>

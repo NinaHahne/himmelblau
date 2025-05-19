@@ -50,6 +50,9 @@ export default {
         dancingScript: ['Dancing Script', 'cursive'],
         nunito: ['Nunito', 'sans-serif'], // Text
       },
+      maskImage: {
+        'fade-bottom-edge': 'linear-gradient(to bottom, black 90%, transparent 100%)',
+      },
     },
   },
 
@@ -63,6 +66,14 @@ export default {
       // (any-hover: none) / (hover: none) / (hover: hover)
       // only the following works on iPhones & Android:
       addVariant('hoverable', '@media (any-hover: hover) and (pointer: fine)');
+    },
+    function ({ addUtilities }) {
+      addUtilities({
+        '.mask-fade-bottom-edge': {
+          '-webkit-mask-image': 'linear-gradient(to bottom, black 90%, transparent 100%)',
+          'mask-image': 'linear-gradient(to bottom, black 90%, transparent 100%)',
+        },
+      });
     },
   ],
 } satisfies Config;

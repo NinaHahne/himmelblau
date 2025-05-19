@@ -5,7 +5,7 @@
   version="1.1"
   stroke="currentColor"
   fill="none"
-  class="pointer-events-none h-auto w-full translate-x-[1%] text-navy-light opacity-[0.5] transition-opacity duration-1000 focus:outline-none"
+  class="pointer-events-none h-auto w-full translate-x-[1%] text-navy-light opacity-0 transition-opacity duration-1000 focus:outline-none"
   aria-label="Homepage"
   role="button"
   tabindex="0"
