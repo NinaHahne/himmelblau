@@ -4,6 +4,7 @@
   import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import type { NavigationData } from "$lib/types";
   import RotatingBurgerMenuButton from "$lib/components/RotatingBurgerMenuButton.svelte";
+  import AnimatedLogoStrokeFilledMenu from "$lib/components/AnimatedLogoStrokeFilledMenu.svelte";
   import AnimatedLogoOnlyFlowerMenu from "$lib/components/AnimatedLogoOnlyFlowerMenu.svelte";
   import LogoPlaceholder from "$lib/components/LogoPlaceholder.svelte";
 
@@ -89,7 +90,7 @@
 >
   <!-- Sidebar Navigation -->
 
-  <div class="blur-spacer mask-fade-bottom-edge sticky top-0 z-10 pb-[5%] backdrop-blur-[4px] lg:hidden">
+  <div class="blur-spacer sticky top-0 z-10 pb-[5%] backdrop-blur-[4px] mask-fade-bottom-edge lg:hidden">
     <div class="logo-wrapper -ml-2 w-[18.5rem] px-6 pt-2">
       <LogoPlaceholder />
     </div>
@@ -98,6 +99,7 @@
   <nav class="fixed top-0 z-40 w-auto">
     <div class="logo-wrapper relative w-72 px-6 pt-2">
       <a href="{base}/" aria-label="Himmelblau Startseite" class="relative -ml-2 block" onclick={toggleMenuIfOpen}>
+        <!-- <AnimatedLogoStrokeFilledMenu /> -->
         <AnimatedLogoOnlyFlowerMenu />
       </a>
     </div>
