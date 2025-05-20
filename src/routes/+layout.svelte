@@ -12,6 +12,21 @@
 
   let { children } = $props();
 
+  let useLogoVariant = $state<"c" | "d">("d");
+
+  onMount(() => {
+    // beim Mount aus localStorage lesen
+    const stored = localStorage.getItem("useLogoVariant");
+    if (stored === "c" || stored === "d") {
+      useLogoVariant = stored;
+    }
+  });
+
+  // bei Änderung speichern
+  $effect(() => {
+    localStorage.setItem("useLogoVariant", useLogoVariant);
+  });
+
   const getScrollbarWidth = () => {
     // Scrollbar-Breite ermitteln
     const e = document.createElement("div");
@@ -36,7 +51,6 @@
   // ✅ Correct Svelte 5 runes usage:
   let navigation = $state<NavigationData | null>(null);
   let showMenu: boolean = $state(false);
-
   let showNavigation = $state(false);
 
   const toggleMenu = () => {
@@ -99,8 +113,11 @@
   <nav class="fixed top-0 z-40 w-auto">
     <div class="logo-wrapper relative w-72 pl-6 pr-14 pt-2">
       <a href="{base}/" aria-label="Himmelblau Startseite" class="relative -ml-2 block" onclick={toggleMenuIfOpen}>
-        <!-- <AnimatedLogoStrokeFilledMenu /> -->
-        <AnimatedLogoOnlyFlowerMenu />
+        {#if useLogoVariant === "c"}
+          <AnimatedLogoStrokeFilledMenu />
+        {:else if useLogoVariant === "d"}
+          <AnimatedLogoOnlyFlowerMenu />
+        {/if}
       </a>
     </div>
   </nav>

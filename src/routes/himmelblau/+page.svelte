@@ -4,6 +4,22 @@
   import AnimatedLogoStroke from "$lib/components/AnimatedLogoStroke.svelte";
   import AnimatedLogoStrokeFilled from "$lib/components/AnimatedLogoStrokeFilled.svelte";
   import AnimatedLogoOnlyFlower from "$lib/components/AnimatedLogoOnlyFlower.svelte";
+  import { onMount } from "svelte";
+
+  let useLogoVariant = $state<"c" | "d">("d");
+
+  onMount(() => {
+    // beim Mount synchronisieren
+    const stored = localStorage.getItem("useLogoVariant");
+    if (stored === "c" || stored === "d") {
+      useLogoVariant = stored;
+    }
+  });
+
+  // speichern bei Änderung
+  $effect(() => {
+    localStorage.setItem("useLogoVariant", useLogoVariant);
+  });
 </script>
 
 <h1 class="mt-4">Coming Soon: Himmelblau 💙</h1>
@@ -18,9 +34,15 @@
 <br />
 <h2><strong>C)</strong> so wie B) aber mit blauer Füllung zum Schluss:</h2>
 <AnimatedLogoStrokeFilled />
+<button class="mt-2 rounded bg-bluebell px-3 py-1 text-white" onclick={() => (useLogoVariant = "c")}>
+  Logo verwenden
+</button>
 <br />
 <h2><strong>D) aktuelles Logo, </strong> so wie C), aber nur die Blume ist animiert:</h2>
 <AnimatedLogoOnlyFlower />
+<button class="mt-2 rounded bg-bluebell px-3 py-1 text-white" onclick={() => (useLogoVariant = "d")}>
+  Logo verwenden
+</button>
 <br />
 <br />
 <p>Altes Logo:</p>
