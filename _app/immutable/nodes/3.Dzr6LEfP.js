@@ -1,0 +1,1 @@
+import{t,a}from"../chunks/CYaJnpbK.js";import"../chunks/CNoiHqEp.js";import{n as e}from"../chunks/Cq8NMwp1.js";var n=t("<h1>Coming Soon: Bildergalerie 🖼️</h1> <p>🚧 This page is under construction. 🏗️</p>",1);function s(o){var r=n();e(2),a(o,r)}export{s as component};
