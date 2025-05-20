@@ -51,7 +51,7 @@ export default {
         nunito: ['Nunito', 'sans-serif'], // Text
       },
       maskImage: {
-        'fade-bottom-edge': 'linear-gradient(to bottom, black 90%, transparent 100%)',
+        'fade-bottom-edge': 'linear-gradient(to bottom, black calc(100% - var(--fade-edge, 40px)), transparent 100%)',
       },
     },
   },
@@ -70,8 +70,10 @@ export default {
     function ({ addUtilities }) {
       addUtilities({
         '.mask-fade-bottom-edge': {
-          '-webkit-mask-image': 'linear-gradient(to bottom, black 90%, transparent 100%)',
-          'mask-image': 'linear-gradient(to bottom, black 90%, transparent 100%)',
+          '--fade-edge': '30px', // default, can be overwritten e.g. style="--fade-edge: 40px"
+          'padding-bottom': 'var(--fade-edge)',
+          '-webkit-mask-image': 'linear-gradient(to bottom, black calc(100% - var(--fade-edge)), transparent 100%)',
+          'mask-image': 'linear-gradient(to bottom, black calc(100% - var(--fade-edge)), transparent 100%)',
         },
       });
     },

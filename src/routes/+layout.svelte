@@ -90,14 +90,14 @@
 >
   <!-- Sidebar Navigation -->
 
-  <div class="blur-spacer sticky top-0 z-10 pb-[5%] backdrop-blur-[4px] mask-fade-bottom-edge lg:hidden">
-    <div class="logo-wrapper -ml-2 w-[18.5rem] px-6 pt-2">
+  <div class="blur-spacer sticky top-0 z-10 backdrop-blur-[4px] mask-fade-bottom-edge lg:hidden">
+    <div class="logo-wrapper -ml-2 w-[18.5rem] pl-6 pr-14 pt-2">
       <LogoPlaceholder />
     </div>
   </div>
 
   <nav class="fixed top-0 z-40 w-auto">
-    <div class="logo-wrapper relative w-72 px-6 pt-2">
+    <div class="logo-wrapper relative w-72 pl-6 pr-14 pt-2">
       <a href="{base}/" aria-label="Himmelblau Startseite" class="relative -ml-2 block" onclick={toggleMenuIfOpen}>
         <!-- <AnimatedLogoStrokeFilledMenu /> -->
         <AnimatedLogoOnlyFlowerMenu />
@@ -126,7 +126,7 @@
       >
         <!-- Old Logo -->
         <!-- <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" /> -->
-        <div class="logo-wrapper relative -ml-2 mb-12 w-auto">
+        <div class="logo-wrapper relative -ml-2 mb-12 mr-8 w-auto">
           <LogoPlaceholder />
         </div>
 
