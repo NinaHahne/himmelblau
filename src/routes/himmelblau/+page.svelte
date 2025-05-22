@@ -32,17 +32,33 @@
 <h2><strong>B)</strong> Blüte wie Schrift animiert:</h2>
 <AnimatedLogoStroke />
 <br />
-<h2><strong>C)</strong> so wie B) aber mit blauer Füllung zum Schluss:</h2>
-<AnimatedLogoStrokeFilled />
-<button class="mt-2 rounded bg-bluebell px-3 py-1 text-white" onclick={() => (useLogoVariant = "c")}>
-  Logo verwenden
-</button>
+<h2>
+  <strong>C)</strong> so wie B) aber mit blauer Füllung zum Schluss:
+</h2>
+<div class="flex flex-col gap-4 lg:flex-row lg:items-end">
+  <AnimatedLogoStrokeFilled />
+  <button
+    disabled={useLogoVariant === "c"}
+    class="relative mt-2 rounded bg-bluebell-light px-3 py-1 text-white transition-all active:translate-y-0.5 disabled:bg-bluebell aria-pressed:bg-bluebell hoverable:hover:bg-bluebell"
+    onclick={() => (useLogoVariant = "c")}
+  >
+    {useLogoVariant === "c" ? "= Aktuelles Logo " : "Logo verwenden"}
+  </button>
+</div>
 <br />
-<h2><strong>D) aktuelles Logo, </strong> so wie C), aber nur die Blume ist animiert:</h2>
-<AnimatedLogoOnlyFlower />
-<button class="mt-2 rounded bg-bluebell px-3 py-1 text-white" onclick={() => (useLogoVariant = "d")}>
-  Logo verwenden
-</button>
+<h2>
+  <strong>D)</strong> so wie C), aber nur die Blume ist animiert:
+</h2>
+<div class="flex flex-col gap-4 lg:flex-row lg:items-end">
+  <AnimatedLogoOnlyFlower />
+  <button
+    disabled={useLogoVariant === "d"}
+    class="relative mt-2 rounded bg-bluebell-light px-3 py-1 text-white transition-all active:translate-y-0.5 disabled:bg-bluebell aria-pressed:bg-bluebell hoverable:hover:bg-bluebell"
+    onclick={() => (useLogoVariant = "d")}
+  >
+    {useLogoVariant === "d" ? "= Aktuelles Logo " : "Logo verwenden"}
+  </button>
+</div>
 <br />
 <br />
 <p>Altes Logo:</p>
