@@ -102,14 +102,14 @@
   <!-- Sidebar Navigation -->
 
   <div class="blur-spacer sticky top-0 z-10 backdrop-blur-[4px] mask-fade-bottom-edge lg:hidden">
-    <div class="logo-wrapper -ml-2 w-[18.5rem] pl-6 pr-14 pt-2">
+    <div class="logo-wrapper w-56 pl-4 pt-2">
       <LogoPlaceholder />
     </div>
   </div>
 
   <nav class="fixed top-0 z-40 w-auto">
-    <div class="logo-wrapper relative w-72 pl-6 pr-14 pt-2">
-      <a href="{base}/" aria-label="Himmelblau Startseite" class="relative -ml-2 block" onclick={toggleMenuIfOpen}>
+    <div class="logo-wrapper relative w-56 pl-4 pt-2">
+      <a href="{base}/" aria-label="Himmelblau Startseite" class="relative block" onclick={toggleMenuIfOpen}>
         {#if useLogoVariant === "c"}
           <AnimatedLogoStrokeFilledMenu />
         {:else if useLogoVariant === "d"}
@@ -140,7 +140,7 @@
       >
         <!-- Old Logo -->
         <!-- <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" /> -->
-        <div class="logo-wrapper relative -ml-2 mb-12 mr-8 w-auto">
+        <div class="logo-wrapper relative -ml-2 mb-12 w-56 pr-4">
           <LogoPlaceholder />
         </div>
 
@@ -150,7 +150,7 @@
           class:opacity-0={!showNavigation}
           class:opacity-100={showNavigation}
         >
-          <ul class="space-y-4 text-[46px] leading-none">
+          <ul class="space-y-4 text-[44px] leading-none">
             {#each navigation?.navLinks ?? [] as { title, url, color, hoverColor }}
               {@const isActive = page.url.pathname === `${base}${url}`}
               {@const textColor = color ?? "navy"}
