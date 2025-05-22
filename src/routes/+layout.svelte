@@ -153,21 +153,31 @@
               <li>
                 <a
                   href="{base}{url}"
-                  class="inline-block text-{color ?? 'navy'} hover:text-{hoverColor ?? 'gold'} focus:text-{hoverColor ??
-                    'gold'} transition-colors duration-300"
+                  class="inline-block text-{color ?? 'navy'} hoverable:hover:text-{hoverColor ??
+                    'gold'} focus:text-{hoverColor ?? 'gold'} transition-colors duration-300"
                   onclick={toggleMenu}
                 >
                   {title}
                 </a>
               </li>
             {/each}
+            <!-- Logo Testing: -->
+            <li>
+              <a
+                href="{base}logo-test"
+                class="inline-block text-stem-green transition-colors duration-300 focus:text-gold hoverable:hover:text-gold"
+                onclick={toggleMenu}
+              >
+                LogoTest
+              </a>
+            </li>
           </ul>
           <ul class="space-y-4 text-[30px] leading-none">
             {#each navigation?.footerLinks ?? [] as { title, url }}
               <li>
                 <a
                   href="{base}{url}"
-                  class="inline-block text-navy transition-colors duration-300 hover:text-gold focus:text-gold"
+                  class="inline-block text-navy transition-colors duration-300 focus:text-gold hoverable:hover:text-gold"
                   onclick={toggleMenu}
                 >
                   {title}
