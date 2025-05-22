@@ -8,6 +8,11 @@
 
   let useLogoVariant = $state<"c" | "d">("d");
 
+  function selectLogoVariant(variant: "c" | "d") {
+    localStorage.setItem("useLogoVariant", variant);
+    location.reload();
+  }
+
   onMount(() => {
     // beim Mount synchronisieren
     const stored = localStorage.getItem("useLogoVariant");
@@ -19,49 +24,49 @@
   // speichern bei Änderung
   $effect(() => {
     localStorage.setItem("useLogoVariant", useLogoVariant);
+    console.log("Logo Variant:", useLogoVariant);
   });
 </script>
 
-<h1 class="mt-4">Coming Soon: Himmelblau 💙</h1>
-<p>🚧 This page is under construction. 🏗️</p>
-<p class="hoverable:hover:text-coral">Logos testen: Klick auf das Logo, um die Animation neu zu starten</p>
-<br />
-<h2><strong>A)</strong> "wachsende" Blüte:</h2>
+<h1>Coming Soon: Himmelblau 💙</h1>
+<p class="mb-4">🚧 This page is under construction. 🏗️</p>
+<p class="font-bold text-bluebell">Logos testen: Klick auf das Logo, um die Animation neu zu starten</p>
+
+<h3 class="mt-8"><strong>A)</strong> "wachsende" Blüte:</h3>
 <AnimatedLogoFilled />
-<br />
-<h2><strong>B)</strong> Blüte wie Schrift animiert:</h2>
+
+<h3 class="mt-8"><strong>B)</strong> Blüte wie Schrift animiert:</h3>
 <AnimatedLogoStroke />
-<br />
-<h2>
+
+<h3 class="mt-8">
   <strong>C)</strong> so wie B) aber mit blauer Füllung zum Schluss:
-</h2>
+</h3>
 <div class="flex flex-col gap-4 lg:flex-row lg:items-end">
   <AnimatedLogoStrokeFilled />
   <button
     disabled={useLogoVariant === "c"}
     class="relative mt-2 rounded bg-bluebell-light px-3 py-1 text-white transition-all active:translate-y-0.5 disabled:bg-bluebell aria-pressed:bg-bluebell hoverable:hover:bg-bluebell"
-    onclick={() => (useLogoVariant = "c")}
+    onclick={() => selectLogoVariant("c")}
   >
     {useLogoVariant === "c" ? "= Aktuelles Logo " : "Logo verwenden"}
   </button>
 </div>
-<br />
-<h2>
+
+<h3 class="mt-8">
   <strong>D)</strong> so wie C), aber nur die Blume ist animiert:
-</h2>
+</h3>
 <div class="flex flex-col gap-4 lg:flex-row lg:items-end">
   <AnimatedLogoOnlyFlower />
   <button
     disabled={useLogoVariant === "d"}
     class="relative mt-2 rounded bg-bluebell-light px-3 py-1 text-white transition-all active:translate-y-0.5 disabled:bg-bluebell aria-pressed:bg-bluebell hoverable:hover:bg-bluebell"
-    onclick={() => (useLogoVariant = "d")}
+    onclick={() => selectLogoVariant("d")}
   >
     {useLogoVariant === "d" ? "= Aktuelles Logo " : "Logo verwenden"}
   </button>
 </div>
-<br />
-<br />
-<p>Altes Logo:</p>
+
+<p class="mt-8">Altes Logo:</p>
 <br />
 <a href="{base}/" aria-label="Himmelblau Startseite" class="block w-full max-w-[100vh] md:w-80">
   <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" />

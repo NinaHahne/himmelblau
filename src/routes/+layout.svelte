@@ -22,11 +22,6 @@
     }
   });
 
-  // bei Änderung speichern
-  $effect(() => {
-    localStorage.setItem("useLogoVariant", useLogoVariant);
-  });
-
   const getScrollbarWidth = () => {
     // Scrollbar-Breite ermitteln
     const e = document.createElement("div");
@@ -186,7 +181,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="flex w-auto flex-col bg-mint px-4 pb-6 pt-12 font-nunito lg:ml-72 lg:p-6 lg:pt-8">
+  <main class="flex w-auto flex-col bg-mint p-4 pb-6 font-nunito lg:ml-72 lg:p-6 lg:pt-8">
     {@render children()}
   </main>
 </div>
