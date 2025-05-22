@@ -6,6 +6,19 @@ import type { Config } from 'tailwindcss';
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
 
+  // safelist is for custom classes with colors chosen via CMS:
+  safelist: [
+    'text-navy',
+    'text-gold',
+    'text-coral',
+    'text-stem-green',
+
+    'hoverable:hover:text-navy',
+    'hoverable:hover:text-gold',
+    'hoverable:hover:text-coral',
+    'hoverable:hover:text-stem-green',
+  ],
+
   theme: {
     extend: {
       colors: {

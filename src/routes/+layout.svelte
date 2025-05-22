@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { onDestroy, onMount } from "svelte";
   import { base } from "$app/paths"; // Dynamically get the base path
+  import { page } from "$app/state";
+  import { onDestroy, onMount } from "svelte";
   import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import type { NavigationData } from "$lib/types";
   import RotatingBurgerMenuButton from "$lib/components/RotatingBurgerMenuButton.svelte";
@@ -12,6 +13,7 @@
 
   let { children } = $props();
 
+  // set default value for useLogoVariant to "d":
   let useLogoVariant = $state<"c" | "d">("d");
 
   onMount(() => {
@@ -150,34 +152,34 @@
         >
           <ul class="space-y-4 text-[46px] leading-none">
             {#each navigation?.navLinks ?? [] as { title, url, color, hoverColor }}
+              {@const isActive = page.url.pathname === `${base}${url}`}
+              {@const textColor = color ?? "navy"}
+              {@const textHoverColor = hoverColor ?? "gold"}
+
               <li>
                 <a
                   href="{base}{url}"
-                  class="inline-block text-{color ?? 'navy'} hoverable:hover:text-{hoverColor ??
-                    'gold'} focus:text-{hoverColor ?? 'gold'} transition-colors duration-300"
+                  class={`inline-block origin-left transition-all duration-300 ${isActive ? "scale-x-[1.2] text-stem-green" : `text-${textColor} hoverable:hover:text-${textHoverColor} focus:text-${textHoverColor}`}`}
+                  class:active={isActive}
                   onclick={toggleMenu}
                 >
                   {title}
                 </a>
               </li>
             {/each}
-            <!-- Logo Testing: -->
-            <li>
-              <a
-                href="{base}logo-test"
-                class="inline-block text-stem-green transition-colors duration-300 focus:text-gold hoverable:hover:text-gold"
-                onclick={toggleMenu}
-              >
-                LogoTest
-              </a>
-            </li>
           </ul>
           <ul class="space-y-4 text-[30px] leading-none">
             {#each navigation?.footerLinks ?? [] as { title, url }}
+              {@const isActive = page.url.pathname === `${base}${url}`}
               <li>
                 <a
                   href="{base}{url}"
-                  class="inline-block text-navy transition-colors duration-300 focus:text-gold hoverable:hover:text-gold"
+                  class="inline-block origin-left text-navy transition-all duration-300"
+                  class:active={isActive}
+                  class:text-stem-green={isActive}
+                  class:scale-x-[1.2]={isActive}
+                  class:hoverable:hover:text-gold={!isActive}
+                  class:focus:text-gold={!isActive}
                   onclick={toggleMenu}
                 >
                   {title}

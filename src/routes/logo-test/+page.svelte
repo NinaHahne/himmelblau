@@ -28,9 +28,8 @@
   });
 </script>
 
-<h1>Coming Soon: Himmelblau 💙</h1>
-<p class="mb-4">🚧 This page is under construction. 🏗️</p>
-<p class="font-bold text-bluebell">Logos testen: Klick auf das Logo, um die Animation neu zu starten</p>
+<h1>Logos testen 🧪</h1>
+<p class="font-bold text-bluebell">Klick auf das Logo, um die Animation neu zu starten</p>
 
 <h3 class="mt-8"><strong>A)</strong> "wachsende" Blüte:</h3>
 <AnimatedLogoFilled />
