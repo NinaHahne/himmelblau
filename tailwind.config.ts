@@ -83,7 +83,7 @@ export default {
     function ({ addUtilities }) {
       addUtilities({
         '.mask-fade-bottom-edge': {
-          '--fade-edge': '30px', // default, can be overwritten e.g. style="--fade-edge: 40px"
+          '--fade-edge': '2rem', // default, can be overwritten e.g. style="--fade-edge: 40px"
           'padding-bottom': 'var(--fade-edge)',
           '-webkit-mask-image': 'linear-gradient(to bottom, black calc(100% - var(--fade-edge)), transparent 100%)',
           'mask-image': 'linear-gradient(to bottom, black calc(100% - var(--fade-edge)), transparent 100%)',

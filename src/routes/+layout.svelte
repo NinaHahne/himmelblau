@@ -101,13 +101,15 @@
 >
   <!-- Sidebar Navigation -->
 
-  <div class="blur-spacer sticky top-0 z-10 backdrop-blur-[4px] mask-fade-bottom-edge lg:hidden">
-    <div class="logo-wrapper w-56 pl-4 pt-2">
+  <div
+    class="blur-spacer sticky top-0 z-10 backdrop-blur-[4px] mask-fade-bottom-edge lg:ml-72 lg:hidden lg:backdrop-blur-none"
+  >
+    <div class="logo-wrapper relative w-56 pl-4 pt-2">
       <LogoPlaceholder />
     </div>
   </div>
 
-  <nav class="fixed top-0 z-40 w-auto">
+  <nav class="fixed top-0 z-40 w-72">
     <div class="logo-wrapper relative w-56 pl-4 pt-2">
       <a href="{base}/" aria-label="Himmelblau Startseite" class="relative block" onclick={toggleMenuIfOpen}>
         {#if useLogoVariant === "c"}
@@ -116,6 +118,15 @@
           <AnimatedLogoOnlyFlowerMenu />
         {/if}
       </a>
+    </div>
+    <!-- TODO: trigger fade in of claim at the end of Logo-Animation -->
+    <div
+      class="claim absolute right-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-patrickHand text-2xl text-bluebell-light transition-opacity delay-[4.4s] duration-1000 lg:flex"
+      class:opacity-0={!showNavigation}
+      class:opacity-100={showNavigation}
+    >
+      <span class="relative right-[16px] top-[8px] block">poetische</span>
+      <span class="relative right-[16px] top-[4px] block">Floristik</span>
     </div>
   </nav>
 
@@ -193,7 +204,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="flex w-auto flex-col bg-mint p-4 pb-6 font-nunito lg:ml-72 lg:p-6 lg:pt-8">
+  <main class="flex w-auto flex-col bg-mint p-4 pb-6 font-nunito lg:ml-72 lg:pt-8">
     {@render children()}
   </main>
 </div>
