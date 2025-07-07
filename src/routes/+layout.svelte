@@ -5,9 +5,9 @@
   import { cachedFetch } from "$lib/sanityClient"; // ✅ Use cached fetch
   import type { NavigationData } from "$lib/types";
   import RotatingBurgerMenuButton from "$lib/components/RotatingBurgerMenuButton.svelte";
-  import AnimatedLogoStrokeFilledMenu from "$lib/components/AnimatedLogoStrokeFilledMenu.svelte";
-  import AnimatedLogoOnlyFlowerMenu from "$lib/components/AnimatedLogoOnlyFlowerMenu.svelte";
-  import LogoPlaceholder from "$lib/components/LogoPlaceholder.svelte";
+  // import AnimatedLogoStrokeFilledMenu from "$lib/components/AnimatedLogoStrokeFilledMenu.svelte";
+  // import AnimatedLogoOnlyFlowerMenu from "$lib/components/AnimatedLogoOnlyFlowerMenu.svelte";
+  // import LogoPlaceholder from "$lib/components/LogoPlaceholder.svelte";
 
   import "../app.css";
 
@@ -104,30 +104,37 @@
   <div
     class="blur-spacer sticky top-0 z-10 backdrop-blur-[4px] mask-fade-bottom-edge lg:ml-72 lg:hidden lg:backdrop-blur-none"
   >
-    <div class="logo-wrapper relative w-56 pl-4 pt-2">
-      <LogoPlaceholder />
+    <div class="logo-wrapper relative w-64 px-6 pt-6">
+      <!-- <LogoPlaceholder /> -->
+      <img
+        src="{base}/images/logo.webp"
+        alt="Himmelblau Logo Placeholder"
+        class="logo pointer-events-none mx-auto w-full opacity-0"
+      />
     </div>
   </div>
 
-  <nav class="fixed top-0 z-40 w-72">
-    <div class="logo-wrapper relative w-56 pl-4 pt-2">
+  <nav class="fixed top-0 z-40 w-64">
+    <div class="logo-wrapper relative w-full px-6 pt-6">
       <a href="{base}/" aria-label="Himmelblau Startseite" class="relative block" onclick={toggleMenuIfOpen}>
-        {#if useLogoVariant === "c"}
+        <!-- {#if useLogoVariant === "c"}
           <AnimatedLogoStrokeFilledMenu />
         {:else if useLogoVariant === "d"}
           <AnimatedLogoOnlyFlowerMenu />
-        {/if}
+        {/if} -->
+        <!-- Old Logo -->
+        <img src="{base}/images/logo.webp" alt="Logo: Himmelblau - poetische Floristik" class="logo mx-auto w-full" />
       </a>
     </div>
     <!-- TODO: trigger fade in of claim at the end of Logo-Animation -->
-    <div
+    <!-- <div
       class="claim absolute right-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-patrickHand text-2xl text-bluebell-light transition-opacity delay-[4.4s] duration-1000 lg:flex"
       class:opacity-0={!showNavigation}
       class:opacity-100={showNavigation}
     >
       <span class="relative right-[16px] top-[8px] block">poetische</span>
       <span class="relative right-[16px] top-[4px] block">Floristik</span>
-    </div>
+    </div> -->
   </nav>
 
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
@@ -144,15 +151,18 @@
         class:opacity-100={showMenu}
       ></span>
     </button>
-    <div class="relative flex h-full w-72">
+    <div class="relative flex h-full w-64">
       <div
-        class="pointer-events-auto relative -left-full flex h-full w-full flex-col overflow-auto bg-sky-blue p-6 pt-2 font-amaticSC text-gray-800 transition-transform duration-300 lg:left-0"
+        class="font-handlee pointer-events-auto relative -left-full flex h-full w-full flex-col overflow-auto bg-sky-blue p-6 text-gray-800 transition-transform duration-300 lg:left-0"
         class:translate-x-full={showMenu}
       >
-        <!-- Old Logo -->
-        <!-- <img src="{base}/images/logo.webp" alt="Himmelblau Logo" class="logo mx-auto w-full" /> -->
-        <div class="logo-wrapper relative -ml-2 mb-12 w-56 pr-4">
-          <LogoPlaceholder />
+        <div class="logo-wrapper relative mb-12 w-full">
+          <!-- <LogoPlaceholder /> -->
+          <img
+            src="{base}/images/logo.webp"
+            alt="Himmelblau Logo Placeholder"
+            class="logo pointer-events-none mx-auto w-full opacity-0"
+          />
         </div>
 
         <!-- Navigation Links -->
@@ -161,7 +171,7 @@
           class:opacity-0={!showNavigation}
           class:opacity-100={showNavigation}
         >
-          <ul class="space-y-4 text-[44px] leading-none">
+          <ul class="space-y-4 text-[33px] leading-none">
             {#each navigation?.navLinks ?? [] as { title, url, color, hoverColor }}
               {@const isActive = page.url.pathname === `${base}${url}`}
               {@const textColor = color ?? "navy"}
@@ -170,7 +180,7 @@
               <li>
                 <a
                   href="{base}{url}"
-                  class={`inline-block origin-left transition-all duration-300 ${isActive ? "scale-x-[1.2] text-stem-green" : `text-${textColor} hoverable:hover:text-${textHoverColor} focus:text-${textHoverColor}`}`}
+                  class={`inline-block origin-left transition-all duration-300 ${isActive ? "scale-x-[1.1] text-stem-green" : `text-${textColor} hoverable:hover:text-${textHoverColor} focus:text-${textHoverColor}`}`}
                   class:active={isActive}
                   onclick={toggleMenu}
                 >
@@ -179,7 +189,7 @@
               </li>
             {/each}
           </ul>
-          <ul class="space-y-4 text-[30px] leading-none">
+          <ul class="space-y-4 text-2xl leading-none">
             {#each navigation?.footerLinks ?? [] as { title, url }}
               {@const isActive = page.url.pathname === `${base}${url}`}
               <li>
@@ -188,7 +198,7 @@
                   class="inline-block origin-left text-navy transition-all duration-300"
                   class:active={isActive}
                   class:text-stem-green={isActive}
-                  class:scale-x-[1.2]={isActive}
+                  class:scale-x-[1.1]={isActive}
                   class:hoverable:hover:text-gold={!isActive}
                   class:focus:text-gold={!isActive}
                   onclick={toggleMenu}
@@ -204,7 +214,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="flex w-auto flex-col bg-mint p-4 pb-6 font-nunito lg:ml-72 lg:pt-8">
+  <main class="flex w-auto flex-col bg-mint p-4 pb-6 font-nunito lg:ml-64 lg:pt-8">
     {@render children()}
   </main>
 </div>

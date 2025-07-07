@@ -60,6 +60,7 @@ export default {
         sacramento: ['Sacramento', 'cursive'],
         architectsDaughter: ['Architects Daughter', 'cursive'],
         patrickHand: ['Patrick Hand', 'cursive'],
+        handlee: ['Handlee', 'cursive'],
         dancingScript: ['Dancing Script', 'cursive'],
         nunito: ['Nunito', 'sans-serif'], // Text
       },
