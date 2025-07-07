@@ -1,0 +1,1 @@
+import{t,a as n}from"../chunks/CCSnbkso.js";import"../chunks/BkpcFe6Z.js";import{n as m}from"../chunks/BcWsQiea.js";var p=t('<h1>Coming Soon: Himmelblau 💙</h1> <p class="mb-4">🚧 This page is under construction. 🏗️</p>',1);function s(o){var a=p();m(2),n(o,a)}export{s as component};

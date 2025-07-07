@@ -1,0 +1,1 @@
+import{t as n,a as p}from"../chunks/CCSnbkso.js";import"../chunks/BkpcFe6Z.js";import{n as r}from"../chunks/BcWsQiea.js";var a=n("<h1>Coming Soon: Impressum ℹ️</h1> <p>🚧 This page is under construction. 🏗️</p>",1);function i(o){var t=a();r(2),p(o,t)}export{i as component};
