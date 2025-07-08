@@ -10,7 +10,7 @@ This is the **Himmelblau** flower shop website, built with **SvelteKit** and int
 - **CMS**: Sanity.io (for opening hours, events, and image gallery)
 - **Hosting**: GitHub Pages
 - **Deployment**: Automated via GitHub Actions
-- **Content Updates**: Managed through [Sanity Studio](https://himmelblau-studio.sanity.studio)
+- **Content Updates**: Managed through [Sanity Studio](https://himmelblau-cms.sanity.studio)
 
 ---
 
@@ -50,7 +50,7 @@ WORKING_ON_CMS=true npm run dev
 
 ### **Update Content (No Redeploy Needed!)**
 
-1. Go to [Sanity Studio](https://himmelblau-studio.sanity.studio).
+1. Go to [https://himmelblau-cms.sanity.studio](https://himmelblau-cms.sanity.studio).
 2. Edit the content and click **Publish**.
 3. The website will automatically fetch updated content.
 
