@@ -123,18 +123,28 @@
           <AnimatedLogoOnlyFlowerMenu />
         {/if} -->
         <!-- Old Logo -->
-        <img src="{base}/images/logo.webp" alt="Logo: Himmelblau - poetische Floristik" class="logo mx-auto w-full" />
+        <img
+          src="{base}/images/logo_base_muted-colors.png"
+          alt="Logo: Himmelblau - poetische Floristik"
+          class="logo mx-auto w-full"
+        />
       </a>
     </div>
-    <!-- TODO: trigger fade in of claim at the end of Logo-Animation -->
-    <!-- <div
-      class="claim absolute right-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-patrickHand text-2xl text-bluebell-light transition-opacity delay-[4.4s] duration-1000 lg:flex"
-      class:opacity-0={!showNavigation}
-      class:opacity-100={showNavigation}
+    <!-- Claim -->
+    <div
+      class="claim absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-handlee text-sm font-bold italic text-bluebell-logo-dark lg:flex"
     >
-      <span class="relative right-[16px] top-[8px] block">poetische</span>
-      <span class="relative right-[16px] top-[4px] block">Floristik</span>
-    </div> -->
+      <span
+        class="absolute left-[5px] top-[108px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
+        class:opacity-0={!showNavigation}
+        class:opacity-100={showNavigation}>poetische</span
+      >
+      <span
+        class="absolute left-[49px] top-[34px] block -rotate-[58deg] transition-opacity delay-700 duration-[1.5s]"
+        class:opacity-0={!showNavigation}
+        class:opacity-100={showNavigation}>Floristik</span
+      >
+    </div>
   </nav>
 
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
@@ -153,10 +163,10 @@
     </button>
     <div class="relative flex h-full w-64">
       <div
-        class="pointer-events-auto relative -left-full flex h-full w-full flex-col overflow-auto bg-sky-blue p-6 font-handlee text-gray-800 transition-transform duration-300 lg:left-0"
+        class="pointer-events-auto relative -left-full flex h-full w-full flex-col gap-8 overflow-auto bg-sky-blue bg-gradient-to-b from-sky-blue to-sky-blue-light p-6 font-handlee text-gray-800 transition-transform duration-300 lg:left-0"
         class:translate-x-full={showMenu}
       >
-        <div class="logo-wrapper relative mb-6 w-full">
+        <div class="logo-wrapper relative w-full flex-1">
           <!-- <LogoPlaceholder /> -->
           <img
             src="{base}/images/logo.webp"
@@ -166,55 +176,58 @@
         </div>
 
         <!-- Navigation Links -->
-        <section
-          class="flex h-full flex-col justify-between gap-4 pt-6 transition-opacity duration-1000"
+        <ul
+          class="flex flex-none flex-col items-center justify-between gap-8 text-[33px] leading-none transition-opacity duration-1000"
+        >
+          {#each navigation?.navLinks ?? [] as { title, url, color, hoverColor }}
+            {@const isActive = page.url.pathname === `${base}${url}`}
+            {@const textColor = color ?? "navy"}
+            {@const textHoverColor = hoverColor ?? "bluebell-logo-dark"}
+
+            <li>
+              <a
+                href="{base}{url}"
+                class={`center inline-block origin-center transition-all duration-300 ${isActive ? "scale-x-[1.1] text-stem-green" : `text-${textColor} hoverable:hover:text-${textHoverColor} focus:text-${textHoverColor}`}`}
+                class:active={isActive}
+                onclick={toggleMenu}
+              >
+                {title}
+              </a>
+            </li>
+          {/each}
+        </ul>
+        <ul
+          class="flex flex-1 items-end justify-between gap-1 text-xl leading-none transition-opacity duration-1000"
           class:opacity-0={!showNavigation}
           class:opacity-100={showNavigation}
         >
-          <ul class="space-y-4 text-[33px] leading-none">
-            {#each navigation?.navLinks ?? [] as { title, url, color, hoverColor }}
-              {@const isActive = page.url.pathname === `${base}${url}`}
-              {@const textColor = color ?? "navy"}
-              {@const textHoverColor = hoverColor ?? "gold"}
-
-              <li>
-                <a
-                  href="{base}{url}"
-                  class={`inline-block origin-left transition-all duration-300 ${isActive ? "scale-x-[1.1] text-stem-green" : `text-${textColor} hoverable:hover:text-${textHoverColor} focus:text-${textHoverColor}`}`}
-                  class:active={isActive}
-                  onclick={toggleMenu}
-                >
-                  {title}
-                </a>
-              </li>
-            {/each}
-          </ul>
-          <ul class="flex justify-between gap-1 text-xl leading-none">
-            {#each navigation?.footerLinks ?? [] as { title, url }}
-              {@const isActive = page.url.pathname === `${base}${url}`}
-              <li>
-                <a
-                  href="{base}{url}"
-                  class="inline-block origin-left text-navy transition-all duration-300"
-                  class:active={isActive}
-                  class:text-stem-green={isActive}
-                  class:scale-x-[1.1]={isActive}
-                  class:hoverable:hover:text-gold={!isActive}
-                  class:focus:text-gold={!isActive}
-                  onclick={toggleMenu}
-                >
-                  {title}
-                </a>
-              </li>
-            {/each}
-          </ul>
-        </section>
+          {#each navigation?.footerLinks ?? [] as { title, url }}
+            {@const isActive = page.url.pathname === `${base}${url}`}
+            <li>
+              <a
+                href="{base}{url}"
+                class="center inline-block origin-center text-navy transition-all duration-300"
+                class:active={isActive}
+                class:text-stem-green={isActive}
+                class:scale-x-[1.1]={isActive}
+                class:hoverable:hover:text-bluebell-logo-dark={!isActive}
+                class:focus:text-bluebell-logo-dark={!isActive}
+                onclick={toggleMenu}
+              >
+                {title}
+              </a>
+            </li>
+          {/each}
+        </ul>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <main class="flex w-auto flex-col bg-mint p-4 pb-6 font-nunito lg:ml-64 lg:pt-8">
+  <main class="flex w-auto flex-col p-4 pb-6 font-nunito lg:ml-64 lg:pt-8">
+    <div
+      class="pointer-events-none fixed left-0 top-0 -z-10 h-lvh w-full bg-gradient-to-b from-mint-light to-mint"
+    ></div>
     {@render children()}
   </main>
 </div>

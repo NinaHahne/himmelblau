@@ -7,25 +7,30 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
 
   // safelist is for custom classes with colors chosen via CMS:
+  // TODO: add more colors
   safelist: [
     'text-navy',
     'text-gold',
     'text-coral',
     'text-stem-green',
 
+    'hoverable:hover:text-bluebell-logo-dark',
     'hoverable:hover:text-navy',
     'hoverable:hover:text-gold',
     'hoverable:hover:text-coral',
     'hoverable:hover:text-stem-green',
+    'hoverable:hover:text-stem-green-dark',
   ],
 
   theme: {
     extend: {
       colors: {
         'sky-blue': '#cdeaf7', // Himmelblau
+        'sky-blue-light': '#e1f3fa', // Light Sky Blue
         softwhite: '#fefcfb', // Soft White
         // lavender: '#f3e8ff', // Pastel Lavender
         mint: '#edfbee', // Pale Mint *
+        'mint-light': '#f6fff8', // Light Mint
         // beige: '#fff4e6', // Creamy Beige
         // blush: '#ffe8ed', // Pale Blush Pink
         sage: '#e3f2e1', // Sage Green
@@ -50,10 +55,13 @@ export default {
         // Bluebell Colors:
         bluebell: '#097ff7',
         'bluebell-light': '#5aaefc',
-        cyan: '#21dae1',
+        'bluebell-logo': '#2a8de5',
+        'bluebell-logo-dark': '#166cb9',
+        cyan: '#33bcd1',
         'cyan-light': '#7deff3',
-        'leaf-green': '#73e8ac', // Leaf Green
-        'stem-green': '#22c662', // Stem Green
+        'leaf-green': '#6cd48b', // Leaf Green
+        'stem-green': '#30a25e', // Stem Green
+        'stem-green-dark': '#2a8c57', // Stem Green Dark
       },
       fontFamily: {
         amaticSC: ['Amatic SC', 'cursive'], // Navigation/Links

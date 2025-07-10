@@ -51,7 +51,7 @@
     <p class="text-center text-deep-moss">
       Im kleinen
       <a
-        class="text-stem-green transition-colors duration-300 hover:text-bluebell focus:text-bluebell"
+        class="text-stem-green-dark transition-colors duration-300 hover:text-bluebell-logo-dark focus:text-bluebell-logo-dark"
         href="http://www.stadtteilzeitung-schoeneberg.de/2009/oktober/19.htm"
         target="_blank"
       >
@@ -85,7 +85,7 @@
       onfocus={() => toggleStar("big")}
       onblur={() => toggleStar("small")}
     >
-      <p class="opening-hours text-center text-bluebell">
+      <p class="opening-hours text-center text-bluebell-logo-dark">
         Die himmelblaue Ladentür
         <br />
         öffnet sich in dieser Woche
@@ -127,7 +127,7 @@
     </p>
     <div id="contact" class="text-center text-deep-moss">
       <a
-        class="text-stem-green transition-colors duration-300 hover:text-bluebell focus:text-bluebell"
+        class="text-stem-green-dark transition-colors duration-300 hover:text-bluebell-logo-dark focus:text-bluebell-logo-dark"
         href="mailto:blumen@himmelblau.de"
       >
         blumen@himmelblau.de
