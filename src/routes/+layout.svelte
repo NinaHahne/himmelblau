@@ -13,7 +13,7 @@
 
   let { children } = $props();
 
-  // set default value for useLogoVariant to "d":
+  /*   // set default value for useLogoVariant to "d":
   let useLogoVariant = $state<"c" | "d">("d");
 
   onMount(() => {
@@ -22,7 +22,7 @@
     if (stored === "c" || stored === "d") {
       useLogoVariant = stored;
     }
-  });
+  }); */
 
   const getScrollbarWidth = () => {
     // Scrollbar-Breite ermitteln
@@ -153,10 +153,10 @@
     </button>
     <div class="relative flex h-full w-64">
       <div
-        class="font-handlee pointer-events-auto relative -left-full flex h-full w-full flex-col overflow-auto bg-sky-blue p-6 text-gray-800 transition-transform duration-300 lg:left-0"
+        class="pointer-events-auto relative -left-full flex h-full w-full flex-col overflow-auto bg-sky-blue p-6 font-handlee text-gray-800 transition-transform duration-300 lg:left-0"
         class:translate-x-full={showMenu}
       >
-        <div class="logo-wrapper relative mb-12 w-full">
+        <div class="logo-wrapper relative mb-6 w-full">
           <!-- <LogoPlaceholder /> -->
           <img
             src="{base}/images/logo.webp"
@@ -167,7 +167,7 @@
 
         <!-- Navigation Links -->
         <section
-          class="flex h-full flex-col justify-between gap-4 transition-opacity duration-1000"
+          class="flex h-full flex-col justify-between gap-4 pt-6 transition-opacity duration-1000"
           class:opacity-0={!showNavigation}
           class:opacity-100={showNavigation}
         >
@@ -189,7 +189,7 @@
               </li>
             {/each}
           </ul>
-          <ul class="space-y-4 text-2xl leading-none">
+          <ul class="flex justify-between gap-1 text-xl leading-none">
             {#each navigation?.footerLinks ?? [] as { title, url }}
               {@const isActive = page.url.pathname === `${base}${url}`}
               <li>
