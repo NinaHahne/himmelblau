@@ -29,8 +29,8 @@ export default {
         'sky-blue-light': '#e1f3fa', // Light Sky Blue
         softwhite: '#fefcfb', // Soft White
         // lavender: '#f3e8ff', // Pastel Lavender
-        mint: '#edfbee', // Pale Mint *
-        'mint-light': '#f6fff8', // Light Mint
+        mint: '#dcefde', // * Pale Mint or #edfbee
+        'mint-light': '#f0fbf1', // Light Mint or #f6fff8
         // beige: '#fff4e6', // Creamy Beige
         // blush: '#ffe8ed', // Pale Blush Pink
         sage: '#e3f2e1', // Sage Green
@@ -64,13 +64,19 @@ export default {
         'stem-green-dark': '#2a8c57', // Stem Green Dark
       },
       fontFamily: {
-        amaticSC: ['Amatic SC', 'cursive'], // Navigation/Links
-        sacramento: ['Sacramento', 'cursive'],
-        architectsDaughter: ['Architects Daughter', 'cursive'],
-        patrickHand: ['Patrick Hand', 'cursive'],
-        handlee: ['Handlee', 'cursive'],
-        dancingScript: ['Dancing Script', 'cursive'],
-        nunito: ['Nunito', 'sans-serif'], // Text
+        // Logo & Navigation/Links:
+        'amatic-sc': ['Amatic SC', 'cursive'],
+        'architects-daughter': ['Architects Daughter', 'cursive'],
+        caveat: ['Caveat', 'cursive'], // ***
+        handlee: ['Handlee', 'cursive'], // *
+        'just-another-hand': ['Just Another Hand', 'cursive'],
+
+        neucha: ['Neucha', 'cursive'],
+        'patrick-hand': ['Patrick Hand', 'cursive'], // **
+        'patrick-hand-sc': ['Patrick Hand SC', 'cursive'],
+        kalam: ['Kalam', 'cursive'],
+        // Text:
+        nunito: ['Nunito', 'sans-serif'], // *
       },
       maskImage: {
         'fade-bottom-edge': 'linear-gradient(to bottom, black calc(100% - var(--fade-edge, 40px)), transparent 100%)',

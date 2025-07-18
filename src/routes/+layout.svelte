@@ -131,20 +131,70 @@
       </a>
     </div>
     <!-- Claim -->
+
+    <!-- Patrick Hand -->
+    <!-- <div
+      class="claim absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-patrick-hand text-base font-normal italic tracking-tight text-bluebell-logo-dark lg:flex"
+    >
+      <span
+        class="absolute left-[3px] top-[106px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
+        class:opacity-0={!showNavigation}
+        class:opacity-100={showNavigation}>poetische</span
+      >
+      <span
+        class="absolute left-[48px] top-[29px] block -rotate-[58deg] transition-opacity delay-700 duration-[1.5s]"
+        class:opacity-0={!showNavigation}
+        class:opacity-100={showNavigation}>Floristik</span
+      >
+    </div> -->
+
+    <!-- Handlee -->
     <div
       class="claim absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-handlee text-sm font-bold italic text-bluebell-logo-dark lg:flex"
     >
       <span
         class="absolute left-[5px] top-[108px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
-        class:opacity-0={!showNavigation}
+        class:opacity-[0.00001]={!showNavigation}
         class:opacity-100={showNavigation}>poetische</span
       >
       <span
         class="absolute left-[49px] top-[34px] block -rotate-[58deg] transition-opacity delay-700 duration-[1.5s]"
-        class:opacity-0={!showNavigation}
+        class:opacity-[0.00001]={!showNavigation}
         class:opacity-100={showNavigation}>Floristik</span
       >
     </div>
+
+    <!-- Caveat -->
+    <!-- <div
+      class="claim absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-caveat text-[21px] font-medium tracking-tighter text-bluebell-logo-dark lg:flex"
+    >
+      <span
+        class="absolute left-0 top-[101px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
+        class:opacity-0={!showNavigation}
+        class:opacity-100={showNavigation}>poetische</span
+      >
+      <span
+        class="absolute left-[46px] top-[23px] block -rotate-[57deg] transition-opacity delay-700 duration-[1.5s]"
+        class:opacity-0={!showNavigation}
+        class:opacity-100={showNavigation}>Floristik</span
+      >
+    </div> -->
+
+    <!-- Kalam -->
+    <!-- <div
+      class="claim font-kalam absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 text-base font-normal italic tracking-tight text-bluebell-logo-dark lg:flex"
+    >
+      <span
+        class="absolute left-[3px] top-[106px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
+        class:opacity-0={!showNavigation}
+        class:opacity-100={showNavigation}>poetische</span
+      >
+      <span
+        class="absolute left-[48px] top-[29px] block -rotate-[58deg] transition-opacity delay-700 duration-[1.5s]"
+        class:opacity-0={!showNavigation}
+        class:opacity-100={showNavigation}>Floristik</span
+      >
+    </div> -->
   </nav>
 
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
@@ -163,7 +213,7 @@
     </button>
     <div class="relative flex h-full w-64">
       <div
-        class="pointer-events-auto relative -left-full flex h-full w-full flex-col gap-8 overflow-auto bg-sky-blue bg-gradient-to-b from-sky-blue to-sky-blue-light p-6 font-handlee text-gray-800 transition-transform duration-300 lg:left-0"
+        class="font-kalam pointer-events-auto relative -left-full flex h-full w-full flex-col gap-8 overflow-auto bg-sky-blue bg-gradient-to-b from-sky-blue to-sky-blue-light p-6 font-light text-gray-800 transition-transform duration-300 lg:left-0"
         class:translate-x-full={showMenu}
       >
         <div class="logo-wrapper relative w-full flex-1">
@@ -177,7 +227,7 @@
 
         <!-- Navigation Links -->
         <ul
-          class="flex flex-none flex-col items-center justify-between gap-8 text-[33px] leading-none transition-opacity duration-1000"
+          class="flex flex-none flex-col items-center justify-between gap-[min(3vh,1.5rem)] text-[33px] leading-none transition-opacity duration-1000 lg:gap-8"
         >
           {#each navigation?.navLinks ?? [] as { title, url, color, hoverColor }}
             {@const isActive = page.url.pathname === `${base}${url}`}
