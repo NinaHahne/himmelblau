@@ -137,12 +137,12 @@
       class="claim absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-patrick-hand text-base font-normal italic tracking-tight text-bluebell-logo-dark lg:flex"
     >
       <span
-        class="absolute left-[3px] top-[106px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
+        class="absolute left-[3px] top-[106px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
         class:opacity-0={!showNavigation}
         class:opacity-100={showNavigation}>poetische</span
       >
       <span
-        class="absolute left-[48px] top-[29px] block -rotate-[58deg] transition-opacity delay-700 duration-[1.5s]"
+        class="absolute left-[48px] top-[29px] block -rotate-[58deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
         class:opacity-0={!showNavigation}
         class:opacity-100={showNavigation}>Floristik</span
       >
@@ -153,13 +153,13 @@
       class="claim absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-handlee text-sm font-bold italic text-bluebell-logo-dark lg:flex"
     >
       <span
-        class="absolute left-0 top-0 block translate-x-[5px] translate-y-[108px] -rotate-[64deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
-        class:opacity-[0.00001]={!showNavigation}
+        class="absolute left-[5px] top-[108px] -rotate-[64deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
+        class:opacity-0={!showNavigation}
         class:opacity-100={showNavigation}>poetische</span
       >
       <span
-        class="absolute left-0 top-0 block translate-x-[49px] translate-y-[34px] -rotate-[58deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
-        class:opacity-[0.00001]={!showNavigation}
+        class="absolute left-[49px] top-[34px] -rotate-[58deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
+        class:opacity-0={!showNavigation}
         class:opacity-100={showNavigation}>Floristik</span
       >
     </div>
@@ -169,12 +169,12 @@
       class="claim absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-caveat text-[21px] font-medium tracking-tighter text-bluebell-logo-dark lg:flex"
     >
       <span
-        class="absolute left-0 top-[101px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
+        class="absolute left-0 top-[101px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
         class:opacity-0={!showNavigation}
         class:opacity-100={showNavigation}>poetische</span
       >
       <span
-        class="absolute left-[46px] top-[23px] block -rotate-[57deg] transition-opacity delay-700 duration-[1.5s]"
+        class="absolute left-[46px] top-[23px] block -rotate-[57deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
         class:opacity-0={!showNavigation}
         class:opacity-100={showNavigation}>Floristik</span
       >
@@ -185,12 +185,12 @@
       class="claim font-kalam absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 text-base font-normal italic tracking-tight text-bluebell-logo-dark lg:flex"
     >
       <span
-        class="absolute left-[3px] top-[106px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
+        class="absolute left-[3px] top-[106px] block -rotate-[64deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
         class:opacity-0={!showNavigation}
         class:opacity-100={showNavigation}>poetische</span
       >
       <span
-        class="absolute left-[48px] top-[29px] block -rotate-[58deg] transition-opacity delay-700 duration-[1.5s]"
+        class="absolute left-[48px] top-[29px] block -rotate-[58deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
         class:opacity-0={!showNavigation}
         class:opacity-100={showNavigation}>Floristik</span
       >
