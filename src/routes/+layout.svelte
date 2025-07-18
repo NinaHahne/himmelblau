@@ -153,12 +153,12 @@
       class="claim absolute left-0 top-0 flex h-full w-auto flex-col items-end justify-start pt-2 font-handlee text-sm font-bold italic text-bluebell-logo-dark lg:flex"
     >
       <span
-        class="absolute left-0 top-0 block translate-x-[5px] translate-y-[108px] -rotate-[64deg] transition-opacity delay-700 duration-[1.5s]"
+        class="absolute left-0 top-0 block translate-x-[5px] translate-y-[108px] -rotate-[64deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
         class:opacity-[0.00001]={!showNavigation}
         class:opacity-100={showNavigation}>poetische</span
       >
       <span
-        class="absolute left-0 top-0 block translate-x-[49px] translate-y-[34px] -rotate-[58deg] transition-opacity delay-700 duration-[1.5s]"
+        class="absolute left-0 top-0 block translate-x-[49px] translate-y-[34px] -rotate-[58deg] transition-opacity delay-700 duration-[1.5s] will-change-transform"
         class:opacity-[0.00001]={!showNavigation}
         class:opacity-100={showNavigation}>Floristik</span
       >
