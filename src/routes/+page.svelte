@@ -72,8 +72,13 @@
         alt="Pfingstrosen und Campanula"
         class="room absolute inset-0 h-full w-full object-cover object-left-top"
       />
-      <div class="door-frame">
-        <img src="{base}/images/Tuer_Fenster.webp" alt="himmelblaue Ladentür" class="door" />
+      <div class="door-frame relative w-[160px]">
+        <img
+          src="{base}/images/tuer_innen_3.webp"
+          alt="himmelblaue Ladentür"
+          class="door absolute bottom-0 left-[6px] w-[148px] will-change-transform"
+        />
+        <img src="{base}/images/tuer_rahmen_3.webp" alt="Türrahmen" class="frame relative" />
       </div>
     </button>
 
@@ -164,12 +169,10 @@
 
 <style>
   .door-frame {
-    perspective: 1000px;
+    perspective: 1500px;
   }
   .door {
     cursor: pointer;
-    width: 160px;
-    height: auto;
     color: #223928;
     transition: transform 0.3s ease-in-out;
     transform-origin: left center;
