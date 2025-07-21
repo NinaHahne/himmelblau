@@ -213,7 +213,7 @@
     </button>
     <div class="relative flex h-full w-64">
       <div
-        class="font-kalam pointer-events-auto relative -left-full flex h-full w-full flex-col gap-8 overflow-auto bg-sky-blue bg-gradient-to-b from-sky-blue to-sky-blue-light p-6 font-light text-gray-800 transition-transform duration-300 lg:left-0"
+        class="pointer-events-auto relative -left-full flex h-full w-full flex-col gap-10 overflow-auto bg-sky-blue bg-gradient-to-b from-sky-blue to-sky-blue-light p-6 font-kalam font-light text-gray-800 transition-transform duration-300 lg:left-0"
         class:translate-x-full={showMenu}
       >
         <div class="logo-wrapper relative w-full flex-1">
