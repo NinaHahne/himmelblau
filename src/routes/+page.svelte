@@ -76,7 +76,7 @@
         <img
           src="{base}/images/tuer_innen_4.webp"
           alt="himmelblaue Ladentür"
-          class="door absolute bottom-0 left-[6px] w-[149px] will-change-transform"
+          class="door absolute bottom-0 left-[5px] w-[150px] will-change-transform"
         />
         <img src="{base}/images/tuer_rahmen_4.webp" alt="Türrahmen" class="frame relative" />
       </div>
